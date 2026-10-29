@@ -1,0 +1,25 @@
+.navigation-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    flex: 1;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    color: var(--card-foreground);
+    font-size: 0.875rem;
+    font-weight: 500;
+}

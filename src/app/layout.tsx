@@ -8,6 +8,7 @@ import { geistMono, geistSans, inter } from "@/ui/fonts";
 
 // * Modules:
 import { LangProvider } from "@/modules/lang/provider";
+import { Navigation } from "@/modules/navigation/navigation";
 
 export const metadata: Metadata = {
     title: "Fuel Wise",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
             <body className="min-h-full flex flex-col">
                 <LangProvider>
-                    {children}
+                    <Navigation>
+                        {children}
+                    </Navigation>
                 </LangProvider>
             </body>
         </html>

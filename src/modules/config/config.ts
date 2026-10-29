@@ -14,3 +14,4 @@ export const MODULES = [
 
 // * Export Types:
 export type ConfigModules = typeof MODULES;
+export type ConfigModule = ConfigModules[number];
