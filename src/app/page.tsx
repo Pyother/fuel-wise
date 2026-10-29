@@ -1,11 +1,15 @@
-// Modules:
-import { MODULES } from '@/modules/config/config';
+// * React and Next:
+
+// * Modules:
+import { Map } from "@/modules/map/map"
 
 export default function Page() {
 
     return (
         <div>
-            Home Page
+            <Map 
+                fullScreen={false}
+            />
         </div>
     )
 }

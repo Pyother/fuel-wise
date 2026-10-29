@@ -1,7 +1,12 @@
+// * Modules:
+import { Map } from "@/modules/map/map"
+
 export default function Page() {
     return (
         <div>
-            Map Page
+            <Map 
+                fullScreen
+            />
         </div>
     )
 }

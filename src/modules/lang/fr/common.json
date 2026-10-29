@@ -1,4 +1,7 @@
 {
     "config_modules_map_name": "Carte",
-    "config_modules_ranking_name": "Ranking"
+    "config_modules_ranking_name": "Ranking",
+    "modules_map_card_title": "Carte des stations-service",
+    "modules_map_card_description": "Carte contenant la liste des stations-service.",
+    "modules_map_card_action": "Accéder à la carte"
 }

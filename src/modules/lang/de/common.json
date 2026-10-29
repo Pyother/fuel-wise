@@ -1,4 +1,7 @@
 {
     "config_modules_map_name": "Landkarte",
-    "config_modules_ranking_name": "Ranking"
+    "config_modules_ranking_name": "Ranking",
+    "modules_map_card_title": "Tankstellenkarte",
+    "modules_map_card_description": "Karte mit einer Liste der Tankstellen.",
+    "modules_map_card_action": "Zur Karte"
 }

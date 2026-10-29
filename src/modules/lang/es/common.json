@@ -1,4 +1,7 @@
 {
     "config_modules_map_name": "Mapa",
-    "config_modules_ranking_name": "Ranking"
+    "config_modules_ranking_name": "Ranking",
+    "modules_map_card_title": "Mapa de estaciones de servicio",
+    "modules_map_card_description": "Mapa con la lista de estaciones de servicio.",
+    "modules_map_card_action": "Ir al mapa"
 }

@@ -1,4 +1,7 @@
 {
     "config_modules_map_name": "Map",
-    "config_modules_ranking_name": "Ranking"
+    "config_modules_ranking_name": "Ranking",
+    "modules_map_card_title": "Fuel Stations Map",
+    "modules_map_card_description": "Map containing list of fuel stations.",
+    "modules_map_card_action": "Go to map"
 }
