@@ -31,7 +31,7 @@ export function Map(props: MapProps) {
                     zoom: 3.5
                 }}
                 style={{width: '100%', height: 'auto', flex: 1, minHeight: 0}}
-                mapStyle="https://demotiles.maplibre.org/style.json"
+                mapStyle={process.env.NEXT_PUBLIC_MAP_STYLE_BRIGHT}
             />
         </Wrapper>
     )

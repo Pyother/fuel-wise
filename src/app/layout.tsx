@@ -7,7 +7,7 @@ import { cn } from "@/lib/ui/utils";
 import { geistMono, geistSans, inter } from "@/ui/fonts";
 
 // * Modules:
-import { LangProvider } from "@/modules/lang/provider";
+import LangProvider from "@/modules/lang/provider";
 import { Navigation } from "@/modules/navigation/navigation";
 
 export const metadata: Metadata = {
