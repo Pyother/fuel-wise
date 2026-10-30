@@ -32,7 +32,7 @@ export function Wrapper(
                     <CardTitle>{t('modules_map_card_title')}</CardTitle>
                     <CardDescription>{t('modules_map_card_description')}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="map-card-content">
                     {children}
                 </CardContent>
                 <CardAction>

@@ -30,7 +30,7 @@ export function Map(props: MapProps) {
                     latitude: 40,
                     zoom: 3.5
                 }}
-                style={{width: 600, height: 400}}
+                style={{width: '100%', height: 'auto', flex: 1, minHeight: 0}}
                 mapStyle="https://demotiles.maplibre.org/style.json"
             />
         </Wrapper>

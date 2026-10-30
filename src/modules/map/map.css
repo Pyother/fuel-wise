@@ -1,9 +1,23 @@
-.map-wrapper {
-    
-}
-
+.map-wrapper,
 .map-card {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+}
+
+.map-card {
     gap: var(--spacing-md);
+}
+
+.map-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.map-card > :not(.map-card-content) {
+    flex-shrink: 0;
 }

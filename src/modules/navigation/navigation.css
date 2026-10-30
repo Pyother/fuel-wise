@@ -4,6 +4,7 @@
     width: 100%;
     max-width: none;
     flex: 1;
+    min-height: 0;
     align-items: stretch;
     justify-content: flex-start;
     gap: var(--spacing-lg);
