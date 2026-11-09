@@ -1,0 +1,10 @@
+.search {
+    flex: none;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+}
+
+.search [data-slot="command-input-wrapper"] {
+    padding-bottom: 0.25rem;
+}

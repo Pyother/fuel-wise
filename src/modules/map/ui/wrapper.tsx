@@ -2,6 +2,7 @@
 
 // * React and Next:
 import { ReactNode } from "react"
+import Link from "next/link";
 
 // * Translations:
 import { useTranslation } from "react-i18next";
@@ -35,10 +36,14 @@ export function Wrapper(
                 <CardContent className="map-card-content">
                     {children}
                 </CardContent>
-                <CardAction>
-                    <Button>
-                        {t('modules_map_card_action')}
-                    </Button>
+                <CardAction className='px-(--spacing-md)'>
+                    <Link href="/map">
+                        <Button
+                            variant="default"
+                        >
+                            {t('modules_map_card_action')}
+                        </Button>
+                    </Link>
                 </CardAction>
             </Card>
         )

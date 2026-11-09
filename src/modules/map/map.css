@@ -16,6 +16,12 @@
     flex-direction: column;
     flex: 1;
     min-height: 0;
+    border-radius: var(--radius-md);
+}
+
+.map-card-content .maplibregl-map {
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .map-card > :not(.map-card-content) {
