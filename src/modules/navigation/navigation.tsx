@@ -13,7 +13,7 @@ import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuList
-} from "@/app/ui/components/navigation-menu";
+} from "@/ui/components/navigation-menu";
 import { 
     Select,
     SelectContent,
@@ -22,7 +22,7 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue
-} from "@/app/ui/components/select";
+} from "@/ui/components/select";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/ui/components/button";
 import "./navigation.css";
