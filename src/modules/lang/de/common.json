@@ -1,4 +1,11 @@
 {
+    "config_languages_label": "Sprachen",
+    "config_languages_english_name": "Englisch",
+    "config_languages_german_name": "Deutsch",
+    "config_languages_italian_name": "Italienisch",
+    "config_languages_spanish_name": "Spanisch",
+    "config_languages_french_name": "Französisch",
+    "config_modules_home_name": "Startseite",
     "config_modules_map_name": "Landkarte",
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Tankstellenkarte",

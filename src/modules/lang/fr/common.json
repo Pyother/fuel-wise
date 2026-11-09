@@ -1,4 +1,11 @@
 {
+    "config_languages_label": "Langues",
+    "config_languages_english_name": "Anglais",
+    "config_languages_german_name": "Allemand",
+    "config_languages_italian_name": "Italien",
+    "config_languages_spanish_name": "Espagnol",
+    "config_languages_french_name": "Français",
+    "config_modules_home_name": "Accueil",
     "config_modules_map_name": "Carte",
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Carte des stations-service",

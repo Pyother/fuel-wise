@@ -1,4 +1,11 @@
 {
+    "config_languages_label": "Languages",
+    "config_languages_english_name": "English",
+    "config_languages_german_name": "German",
+    "config_languages_italian_name": "Italian",
+    "config_languages_spanish_name": "Spanish",
+    "config_languages_french_name": "French",
+    "config_modules_home_name": "Home",
     "config_modules_map_name": "Map",
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Fuel Stations Map",
