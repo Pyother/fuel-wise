@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 export const instant = false;
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
+    
     const initialTheme = await getTheme();
 
     return (
