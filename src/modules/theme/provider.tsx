@@ -1,11 +1,14 @@
+"use client";
+
 // * React and Next:
-import { createContext, useState, ReactNode, useMemo } from 'react';
+import { createContext, useContext, useEffect, useState, useMemo } from 'react';
+import type { ReactNode } from 'react';
 
 // * Lib:
-
+import { changeTheme } from './lib/changeTheme';
 
 // * Types:
-import { Theme } from './theme.type';
+import type { Theme } from './theme.type';
 
 const ThemeContext = createContext<{
     theme: Theme;
@@ -17,11 +20,11 @@ export default function ThemeProvider(
     { initialTheme: Theme, children: ReactNode }
 ) {
 
-    const [theme, setCurrentTheme] = useState<Theme>(initialTheme);
+    const [theme, setTheme] = useState<Theme>(initialTheme);
 
-    const setTheme = (theme: Theme) => {
-
-    }
+    useEffect(() => {
+        changeTheme(theme);
+    }, [theme]);
 
     const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
@@ -32,4 +35,14 @@ export default function ThemeProvider(
             {children}
         </ThemeContext.Provider>
     )
+}
+
+export function useTheme() {
+    const context = useContext(ThemeContext);
+
+    if (context === null) {
+        throw new Error('useTheme must be used within ThemeProvider');
+    }
+
+    return context;
 }
