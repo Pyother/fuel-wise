@@ -1,7 +1,6 @@
 
 
 // * React and Next:
-import { Suspense, type ReactNode } from "react";
 import type { Metadata } from "next";
 
 // * UI:
@@ -22,17 +21,11 @@ export const metadata: Metadata = {
     description: "",
 };
 
-async function ThemedContent({ children }: { children: ReactNode }) {
+export const instant = false;
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
     const initialTheme = await getTheme();
 
-    return (
-        <ThemeProvider initialTheme={initialTheme}>
-            <Navigation>{children}</Navigation>
-        </ThemeProvider>
-    );
-}
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
         <html
             lang="en"
@@ -40,13 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
             <body className="h-dvh flex flex-col">
                 <LangProvider>
-                    <Suspense fallback={
-                        <div role="status" className="flex flex-1 items-center justify-center">
-                            Loading Fuel Wise…
-                        </div>
-                    }>
-                        <ThemedContent>{children}</ThemedContent>
-                    </Suspense>
+                    <ThemeProvider initialTheme={initialTheme}>
+                        <Navigation>{children}</Navigation>
+                    </ThemeProvider>
                 </LangProvider>
             </body>
         </html>
