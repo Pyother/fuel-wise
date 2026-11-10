@@ -44,5 +44,7 @@
     "ranking_error": "No se pudieron cargar las rutas.",
     "ranking_failed": "Rutas no disponibles: {{count}}.",
     "ranking_wait": "Selecciona una ubicación y busca estaciones de servicio.",
-    "ranking_retry": "Reintentar"
+    "ranking_retry": "Reintentar",
+    "home_panels": "Paneles de inicio",
+    "common_toggle_theme": "Cambiar tema"
 }

@@ -32,7 +32,7 @@ export const Search = ({ onSelect, onStationSelect, onStationsChange, onPointCha
     const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange, onPointChange);
 
     return (
-        <Command className="search" shouldFilter={false}>
+        <Command id="search-panel" className="search" shouldFilter={false}>
             <SearchOptions value={search.options} onApply={search.setOptions} />
             {search.city && (
                 <div className="search-origin" onKeyDown={event => event.stopPropagation()}>

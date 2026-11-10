@@ -44,5 +44,7 @@
     "ranking_error": "Impossibile caricare i percorsi.",
     "ranking_failed": "Percorsi non disponibili: {{count}}.",
     "ranking_wait": "Seleziona una posizione e cerca le stazioni di servizio.",
-    "ranking_retry": "Riprova"
+    "ranking_retry": "Riprova",
+    "home_panels": "Pannelli della home",
+    "common_toggle_theme": "Cambia tema"
 }

@@ -45,3 +45,10 @@
     background: var(--primary);
     color: var(--primary-foreground);
 }
+
+@media (width < 64rem) {
+    .map-station {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}

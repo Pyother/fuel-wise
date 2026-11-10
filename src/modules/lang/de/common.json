@@ -44,5 +44,7 @@
     "ranking_error": "Routen konnten nicht geladen werden.",
     "ranking_failed": "Nicht verfügbare Routen: {{count}}.",
     "ranking_wait": "Wähle einen Standort und suche nach Tankstellen.",
-    "ranking_retry": "Erneut versuchen"
+    "ranking_retry": "Erneut versuchen",
+    "home_panels": "Startseitenbereiche",
+    "common_toggle_theme": "Design wechseln"
 }

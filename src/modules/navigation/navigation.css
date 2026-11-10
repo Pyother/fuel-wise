@@ -23,3 +23,40 @@
     font-size: 0.875rem;
     font-weight: 500;
 }
+
+@media (width < 64rem) {
+    .navigation-list {
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .navigation-list > a {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+    }
+
+    .navigation-menu:has(.home-panel-links) .navigation-list > a {
+        display: none;
+    }
+
+    .navigation-controls {
+        flex-basis: 100%;
+        min-width: 0;
+        gap: var(--spacing-sm);
+    }
+
+    .navigation-controls [data-slot="select-trigger"] {
+        flex: 1;
+        min-width: 0;
+        max-width: none;
+        min-height: 2.75rem;
+    }
+
+    .navigation-controls > button {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+    }
+}

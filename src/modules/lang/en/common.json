@@ -44,5 +44,7 @@
     "ranking_error": "Routes could not be loaded.",
     "ranking_failed": "Routes unavailable: {{count}}.",
     "ranking_wait": "Choose a location and search for stations.",
-    "ranking_retry": "Try again"
+    "ranking_retry": "Try again",
+    "home_panels": "Home panels",
+    "common_toggle_theme": "Change theme"
 }

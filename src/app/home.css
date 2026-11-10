@@ -1,0 +1,124 @@
+.home-panel-links {
+    display: none;
+}
+
+@media (width < 64rem) {
+    #app {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        padding: var(--spacing-md);
+        padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom));
+        scroll-padding-top: 4.5rem;
+    }
+
+    #app > * {
+        flex: none;
+        width: 100%;
+    }
+
+    #app .home-panel-links {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 0.25rem;
+        background: var(--card);
+    }
+
+    .home-panel-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+        min-width: 0;
+        min-height: 2.75rem;
+        padding: 0.375rem;
+        border-radius: var(--radius-md);
+        font-size: 0.875rem;
+    }
+
+    .home-panel-links a:hover, .home-panel-links a:focus-visible {
+        background: var(--muted);
+    }
+
+    .home-panel-links svg {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+    }
+
+    .home-panel-links span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #app .search, #app .ranking {
+        height: auto;
+        padding: var(--spacing-md);
+    }
+
+    #app .search:has([data-slot="command-list"]) {
+        height: clamp(28rem, 75dvh, 42rem);
+    }
+
+    #app .map-card {
+        height: clamp(24rem, 65dvh, 36rem);
+        --card-spacing: var(--spacing-md);
+    }
+
+    #app .ranking:has(.ranking-item), #app .ranking:has([aria-busy="true"]) {
+        height: clamp(24rem, 65dvh, 38rem);
+    }
+
+    #app .ranking-list:empty, #app .ranking-list:has(ol:empty) {
+        flex: none;
+    }
+
+    #app .search-options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #app .search-options button {
+        grid-column: 1 / -1;
+    }
+
+    #app input {
+        font-size: 1rem;
+    }
+
+    #app .search-options input, #app .search-options button,
+    #app .search-pagination button, #app .ranking-pagination button,
+    #app .search-origin button, #app .ranking-retry,
+    #app [data-slot="input-group"] button, #app .map-card a {
+        min-height: 2.75rem;
+    }
+
+    #app [data-slot="input-group"] button {
+        min-width: 2.75rem;
+    }
+
+    #app .search-locations-item {
+        height: 2.75rem;
+    }
+
+    #app .map-card [data-slot="card-action"], #app .map-card [data-slot="card-action"] a {
+        display: block;
+        width: 100%;
+    }
+
+    #app .map-card [data-slot="card-action"] button {
+        width: 100%;
+        min-height: 2.75rem;
+    }
+}
+
+@media (width < 64rem) and (prefers-reduced-motion: no-preference) {
+    #app {
+        scroll-behavior: smooth;
+    }
+}

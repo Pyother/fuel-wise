@@ -44,5 +44,7 @@
     "ranking_error": "Impossible de charger les itinéraires.",
     "ranking_failed": "Itinéraires indisponibles : {{count}}.",
     "ranking_wait": "Choisissez un lieu et recherchez des stations-service.",
-    "ranking_retry": "Réessayer"
+    "ranking_retry": "Réessayer",
+    "home_panels": "Panneaux de l’accueil",
+    "common_toggle_theme": "Changer de thème"
 }

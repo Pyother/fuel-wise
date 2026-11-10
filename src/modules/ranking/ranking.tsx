@@ -19,7 +19,7 @@ const Ranking = () => {
     const { searchPoint, stations, selectedStation, setSelectedStation } = useStations();
     const { listRef, ...ranking } = useRanking(searchPoint, stations);
     return (
-        <aside className="ranking" aria-label={t("ranking_title")}>
+        <aside id="ranking-panel" className="ranking" aria-label={t("ranking_title")}>
             <header>
                 <h2>{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>

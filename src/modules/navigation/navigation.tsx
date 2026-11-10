@@ -53,7 +53,7 @@ export function Navigation({children}: { children: ReactNode }) {
                     </NavigationMenuItem>
                     </Link>
                 ))}
-                <div className="flex flex-1 flex-row gap-(--spacing-md) justify-end">
+                <div className="navigation-controls flex flex-1 flex-row gap-(--spacing-md) justify-end">
                     
                     <Select
                         value={language.shortcut}
@@ -82,6 +82,7 @@ export function Navigation({children}: { children: ReactNode }) {
                     <Button
                         variant="outline" 
                         size="icon"
+                        aria-label={t("common_toggle_theme")}
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                     >
                         {

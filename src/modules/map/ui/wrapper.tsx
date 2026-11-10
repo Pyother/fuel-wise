@@ -28,7 +28,7 @@ export function Wrapper(
 
     if(!fullScreen) {
         return (
-            <Card className="map-card">
+            <Card id="map-panel" className="map-card">
                 <CardHeader>
                     <CardTitle>{t('modules_map_card_title')}</CardTitle>
                     <CardDescription>{t('modules_map_card_description')}</CardDescription>
