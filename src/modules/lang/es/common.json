@@ -32,5 +32,17 @@
     "search_location_denied": "Acceso a la ubicación denegado. Permite el acceso o busca por dirección.",
     "search_location_unavailable": "Tu ubicación no está disponible. Inténtalo de nuevo o busca por dirección.",
     "search_location_timeout": "Se agotó el tiempo para obtener la ubicación. Inténtalo de nuevo.",
-    "search_point": "Punto de búsqueda: {{location}}"
+    "search_point": "Punto de búsqueda: {{location}}",
+    "ranking_title": "Ranking de gasolineras",
+    "ranking_description": "Estaciones encontradas, ordenadas por distancia por carretera.",
+    "ranking_from": "Desde: {{location}}",
+    "ranking_distance": "Distancia por carretera",
+    "ranking_time": "Tiempo de conducción estimado",
+    "ranking_duration": "≈ {{minutes}} min",
+    "ranking_unavailable": "Ruta no disponible",
+    "ranking_loading": "Calculando rutas…",
+    "ranking_error": "No se pudieron cargar las rutas.",
+    "ranking_failed": "Rutas no disponibles: {{count}}.",
+    "ranking_wait": "Selecciona una ubicación y busca estaciones de servicio.",
+    "ranking_retry": "Reintentar"
 }

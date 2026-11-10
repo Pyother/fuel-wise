@@ -32,5 +32,17 @@
     "search_location_denied": "Accesso alla posizione negato. Consenti l’accesso o cerca per indirizzo.",
     "search_location_unavailable": "La posizione non è disponibile. Riprova o cerca per indirizzo.",
     "search_location_timeout": "Tempo scaduto per il rilevamento della posizione. Riprova.",
-    "search_point": "Punto di ricerca: {{location}}"
+    "search_point": "Punto di ricerca: {{location}}",
+    "ranking_title": "Classifica dei distributori",
+    "ranking_description": "Stazioni trovate, ordinate per distanza stradale.",
+    "ranking_from": "Da: {{location}}",
+    "ranking_distance": "Distanza stradale",
+    "ranking_time": "Tempo di guida stimato",
+    "ranking_duration": "≈ {{minutes}} min",
+    "ranking_unavailable": "Percorso non disponibile",
+    "ranking_loading": "Calcolo dei percorsi…",
+    "ranking_error": "Impossibile caricare i percorsi.",
+    "ranking_failed": "Percorsi non disponibili: {{count}}.",
+    "ranking_wait": "Seleziona una posizione e cerca le stazioni di servizio.",
+    "ranking_retry": "Riprova"
 }

@@ -32,5 +32,17 @@
     "search_location_denied": "Standortzugriff verweigert. Erlaube den Zugriff oder suche nach einer Adresse.",
     "search_location_unavailable": "Dein Standort ist nicht verfügbar. Versuche es erneut oder suche nach einer Adresse.",
     "search_location_timeout": "Zeitüberschreitung bei der Standortabfrage. Versuche es erneut.",
-    "search_point": "Suchpunkt: {{location}}"
+    "search_point": "Suchpunkt: {{location}}",
+    "ranking_title": "Tankstellen-Ranking",
+    "ranking_description": "Gefundene Tankstellen nach Fahrstrecke sortiert.",
+    "ranking_from": "Von: {{location}}",
+    "ranking_distance": "Fahrstrecke",
+    "ranking_time": "Geschätzte Fahrzeit",
+    "ranking_duration": "≈ {{minutes}} Min.",
+    "ranking_unavailable": "Route nicht verfügbar",
+    "ranking_loading": "Routen werden berechnet…",
+    "ranking_error": "Routen konnten nicht geladen werden.",
+    "ranking_failed": "Nicht verfügbare Routen: {{count}}.",
+    "ranking_wait": "Wähle einen Standort und suche nach Tankstellen.",
+    "ranking_retry": "Erneut versuchen"
 }

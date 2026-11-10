@@ -1,0 +1,76 @@
+.ranking {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    gap: var(--spacing-md);
+    padding: calc(5 * var(--spacing));
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+}
+
+.ranking header, .ranking-status, .ranking-pagination {
+    flex-shrink: 0;
+}
+
+.ranking h2 {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.ranking header {
+    display: grid;
+    gap: calc(1.5 * var(--spacing));
+}
+
+.ranking header p {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.ranking-origin {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ranking-status, .ranking-pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.875rem;
+}
+
+.ranking-status:empty {
+    display: none;
+}
+
+.ranking-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.ranking-list ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ranking-pagination {
+    justify-content: space-between;
+}
+
+.ranking-pagination button:disabled {
+    opacity: 0.5;
+}
+
+.ranking-retry {
+    align-self: start;
+    text-decoration: underline;
+    font-size: 0.875rem;
+}

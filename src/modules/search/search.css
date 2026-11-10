@@ -3,8 +3,8 @@
     min-width: 0;
     min-height: 0;
     height: 100%;
-    padding: var(--spacing-sm);
-    gap: var(--spacing-sm);
+    padding: calc(5 * var(--spacing));
+    gap: var(--spacing-md);
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
 }

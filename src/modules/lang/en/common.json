@@ -32,5 +32,17 @@
     "search_location_denied": "Location access denied. Allow access or search by address.",
     "search_location_unavailable": "Your location is unavailable. Try again or search by address.",
     "search_location_timeout": "Location request timed out. Try again.",
-    "search_point": "Search point: {{location}}"
+    "search_point": "Search point: {{location}}",
+    "ranking_title": "Station ranking",
+    "ranking_description": "Searched stations, sorted by driving distance.",
+    "ranking_from": "From: {{location}}",
+    "ranking_distance": "Driving distance",
+    "ranking_time": "Estimated driving time",
+    "ranking_duration": "≈ {{minutes}} min",
+    "ranking_unavailable": "Route unavailable",
+    "ranking_loading": "Calculating routes…",
+    "ranking_error": "Routes could not be loaded.",
+    "ranking_failed": "Routes unavailable: {{count}}.",
+    "ranking_wait": "Choose a location and search for stations.",
+    "ranking_retry": "Try again"
 }

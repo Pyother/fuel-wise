@@ -32,5 +32,17 @@
     "search_location_denied": "Accès à la position refusé. Autorisez l’accès ou recherchez une adresse.",
     "search_location_unavailable": "Votre position est indisponible. Réessayez ou recherchez une adresse.",
     "search_location_timeout": "Le délai de localisation a expiré. Réessayez.",
-    "search_point": "Point de recherche : {{location}}"
+    "search_point": "Point de recherche : {{location}}",
+    "ranking_title": "Classement des stations",
+    "ranking_description": "Stations trouvées, classées par distance routière.",
+    "ranking_from": "Depuis : {{location}}",
+    "ranking_distance": "Distance routière",
+    "ranking_time": "Temps de trajet estimé",
+    "ranking_duration": "≈ {{minutes}} min",
+    "ranking_unavailable": "Itinéraire indisponible",
+    "ranking_loading": "Calcul des itinéraires…",
+    "ranking_error": "Impossible de charger les itinéraires.",
+    "ranking_failed": "Itinéraires indisponibles : {{count}}.",
+    "ranking_wait": "Choisissez un lieu et recherchez des stations-service.",
+    "ranking_retry": "Réessayer"
 }
