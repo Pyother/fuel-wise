@@ -1,22 +1,12 @@
 "use client";
 
-// * React and Next:
-import { useCallback, useState } from "react";
-
 // * Modules:
 import { Map } from "@/modules/map/map";
+import { useStations } from "@/modules/map/provider";
 import { Search } from "./search";
 
-// * Types:
-import type { SearchStationsResult } from "./types/search-stations-result.type";
-
 export const SearchMap = () => {
-    const [stations, setStations] = useState<SearchStationsResult[]>([]);
-    const [selectedStation, setSelectedStation] = useState<SearchStationsResult | null>(null);
-    const onStationsChange = useCallback((results: SearchStationsResult[]) => {
-        setStations(results);
-        setSelectedStation(null);
-    }, []);
+    const { stations, selectedStation, onStationsChange, setSelectedStation } = useStations();
 
     return (
         <>
