@@ -2,6 +2,8 @@
     "common_get_location": "Get location",
     "common_search": "Search",
     "search_loading": "Searching…",
+    "search_stations_loading": "Searching for fuel stations…",
+    "search_stations_empty": "No fuel stations found within 5 km.",
     "search_error": "Search failed. Edit your query to try again.",
     "search_empty": "No locations found.",
     "search_previous": "Previous",

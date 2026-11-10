@@ -21,6 +21,7 @@ export async function getLocations({
 
     const params = new URLSearchParams({
         text: query.trim(),
+        type: "city",
         limit: String(limit),
         format: "json",
         apiKey,
@@ -43,15 +44,18 @@ export async function getLocations({
         throw new Error(`Geoapify API returned HTTP ${response.status}.`);
     }
 
-    const data: { results: Partial<SearchLocationsResult>[] } =
+    const data: {
+        results: (Partial<SearchLocationsResult> & { result_type?: string; city?: string })[];
+    } =
         await response.json();
 
-    return data.results.flatMap(({ place_id, formatted, lat, lon }) =>
+    return data.results.flatMap(({ place_id, city, lat, lon, result_type }) =>
+        result_type === "city" &&
         typeof place_id === "string" &&
-        typeof formatted === "string" &&
+        typeof city === "string" && city.trim().length > 0 &&
         typeof lat === "number" && Number.isFinite(lat) &&
         typeof lon === "number" && Number.isFinite(lon)
-            ? [{ place_id, formatted, lat, lon }]
+            ? [{ place_id, formatted: city, lat, lon }]
             : []
     );
 }

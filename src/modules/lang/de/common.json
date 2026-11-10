@@ -2,6 +2,8 @@
     "common_get_location": "Standort ermitteln",
     "common_search": "Suchen",
     "search_loading": "Suche läuft…",
+    "search_stations_loading": "Tankstellen werden gesucht…",
+    "search_stations_empty": "Keine Tankstellen im Umkreis von 5 km gefunden.",
     "search_error": "Die Suche ist fehlgeschlagen. Ändere deine Suchanfrage und versuche es erneut.",
     "search_empty": "Keine Orte gefunden.",
     "search_previous": "Zurück",

@@ -1,3 +1,5 @@
+"use server";
+
 // * Types:
 import type { SearchStationsParams } from "@/modules/search/types/search-stations-params.type";
 import type { SearchStationsResult } from "@/modules/search/types/search-stations-result.type";

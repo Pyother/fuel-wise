@@ -1,27 +1,45 @@
 .search {
     flex: none;
     min-width: 0;
-    height: auto;
+    min-height: 0;
+    height: 100%;
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
 }
 
 .search [data-slot="command-input-wrapper"] {
+    flex-shrink: 0;
     padding-bottom: 0.25rem;
 }
 
 .search [data-slot="command-list"] {
+    flex: 1;
+    width: 100%;
     min-width: 0;
-    padding-inline: 0.25rem;
+    min-height: 0;
+    max-height: none;
+    padding-inline: 0;
     overflow-x: hidden;
 }
 
+.search [data-slot="command-item"] {
+    width: 100%;
+}
+
 .search-status:not(:empty), .search-pagination {
+    flex-shrink: 0;
     padding: var(--spacing-sm);
     font-size: 0.875rem;
 }
 
+.search-status:not(:empty) {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
 .search-pagination {
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     gap: var(--spacing-sm);

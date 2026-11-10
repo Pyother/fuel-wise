@@ -8,17 +8,21 @@ import { useTranslation } from "react-i18next";
 
 // * UI:
 import { Command, CommandInput, CommandList } from "@/ui/components/command";
+import { LoaderCircle } from "lucide-react";
 import SearchLocationsItem from "./ui/search-locations-item";
+import SearchStationsItem from "./ui/search-stations-item";
 import "./search.css";
 
 // * Types:
 import type { SearchLocationsResult } from "./types/search-locations-result.type";
+import type { SearchStationsResult } from "./types/search-stations-result.type";
 
-export const Search = ({ onSelect }: {
+export const Search = ({ onSelect, onStationSelect }: {
     onSelect?: (result: SearchLocationsResult) => void;
+    onStationSelect?: (result: SearchStationsResult) => void;
 }) => {
     const { t, i18n } = useTranslation();
-    const search = useSearch(i18n.resolvedLanguage ?? "en");
+    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en");
 
     return (
         <Command className="search" shouldFilter={false}>
@@ -29,9 +33,12 @@ export const Search = ({ onSelect }: {
                 placeholder={`${t("common_search")}...`}
                 aria-label={t("common_search")}
             />
-            {search.isSearching && (
+            {(search.isSearching || search.selectedLocation) && (
                 <>
-                    <CommandList aria-busy={search.isLoading}>
+                    <CommandList ref={listRef} aria-busy={search.isLoading}>
+                        {search.stations.map((station) => (
+                            <SearchStationsItem key={station.place_id} props={station} onSelect={onStationSelect} />
+                        ))}
                         {search.results.map((result) => (
                             <SearchLocationsItem
                                 key={result.place_id}
@@ -44,11 +51,17 @@ export const Search = ({ onSelect }: {
                         ))}
                     </CommandList>
                     <div role="status" className="search-status">
-                        {search.isLoading ? t("search_loading") : search.error ? t("search_error") :
+                        {search.isLoading ? (
+                            <>
+                                <LoaderCircle className="size-4 shrink-0 animate-spin motion-reduce:animate-none" aria-hidden="true" />
+                                {t(search.selectedLocation ? "search_stations_loading" : "search_loading")}
+                            </>
+                        ) : search.error ? t("search_error") : search.selectedLocation ?
+                            search.stations.length === 0 ? t("search_stations_empty") : null :
                             search.results.length === 0 ? t("search_empty") : null}
                     </div>
-                    {search.pageCount > 1 && (
-                        <div className="search-pagination">
+                    {search.resultCount > 0 && (
+                        <div className="search-pagination" style={{ visibility: search.pageCount > 1 ? "visible" : "hidden" }}>
                             <button type="button" disabled={search.page === 1}
                                 onClick={() => search.setPage(search.page - 1)}>
                                 {t("search_previous")}

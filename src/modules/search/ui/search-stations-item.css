@@ -1,4 +1,6 @@
 .search-stations-item {
+    min-width: 0;
+    height: calc(2.5rem + 2 * var(--spacing-sm));
     gap: var(--spacing-sm);
     padding: var(--spacing-sm);
 }
@@ -6,7 +8,14 @@
 .search-stations-item-content {
     flex: 1;
     min-width: 0;
-    overflow-wrap: anywhere;
+    overflow: hidden;
+}
+
+.search-stations-item-content strong, .search-stations-item-content p {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .search-stations-item-content p {

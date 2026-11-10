@@ -2,6 +2,8 @@
     "common_get_location": "Obtener ubicación",
     "common_search": "Buscar",
     "search_loading": "Buscando…",
+    "search_stations_loading": "Buscando estaciones de servicio…",
+    "search_stations_empty": "No se encontraron estaciones de servicio en un radio de 5 km.",
     "search_error": "La búsqueda ha fallado. Modifica tu consulta para volver a intentarlo.",
     "search_empty": "No se encontraron lugares.",
     "search_previous": "Anterior",
