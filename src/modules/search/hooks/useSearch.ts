@@ -11,7 +11,7 @@ import { getStations } from "@/lib/api/getStations";
 import type { SearchLocationsResult } from "../types/search-locations-result.type";
 import type { SearchStationsResult } from "../types/search-stations-result.type";
 
-const useSearch = (lang = "en") => {
+const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResult[]) => void) => {
     const [query, setQuery] = useState("");
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
@@ -49,13 +49,16 @@ const useSearch = (lang = "en") => {
         let active = true;
         getStations({ latitude: selected.lat, longitude: selected.lon, radius_m: 5000, limit: 20 })
             .then((results) => {
-                if (active) setStationsResponse({ location: selected, results, error: false });
+                if (active) {
+                    setStationsResponse({ location: selected, results, error: false });
+                    onStationsChange?.(results);
+                }
             })
             .catch(() => {
                 if (active) setStationsResponse({ location: selected, results: [], error: true });
             });
         return () => { active = false; };
-    }, [selected]);
+    }, [selected, onStationsChange]);
 
     const results = isSearching && response.key === key ? response.results : [];
     const stations = selected && stationsResponse.location === selected ? stationsResponse.results : [];
@@ -83,11 +86,13 @@ const useSearch = (lang = "en") => {
             setQuery(value);
             setPage(1);
             setSelected(null);
+            onStationsChange?.([]);
             setResponse({ key: "", results: [], error: false });
         },
         selectLocation: (result: SearchLocationsResult) => {
             setQuery(result.formatted);
             setSelected(result);
+            onStationsChange?.([]);
             setPage(1);
             setStationsResponse({ location: null, results: [], error: false });
         },

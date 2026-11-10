@@ -17,12 +17,13 @@ import "./search.css";
 import type { SearchLocationsResult } from "./types/search-locations-result.type";
 import type { SearchStationsResult } from "./types/search-stations-result.type";
 
-export const Search = ({ onSelect, onStationSelect }: {
+export const Search = ({ onSelect, onStationSelect, onStationsChange }: {
     onSelect?: (result: SearchLocationsResult) => void;
     onStationSelect?: (result: SearchStationsResult) => void;
+    onStationsChange?: (stations: SearchStationsResult[]) => void;
 }) => {
     const { t, i18n } = useTranslation();
-    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en");
+    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange);
 
     return (
         <Command className="search" shouldFilter={false}>
