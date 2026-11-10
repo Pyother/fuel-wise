@@ -1,15 +1,15 @@
-.search-item {
+.search-stations-item {
     gap: var(--spacing-sm);
     padding: var(--spacing-sm);
 }
 
-.search-item-content {
+.search-stations-item-content {
     flex: 1;
     min-width: 0;
     overflow-wrap: anywhere;
 }
 
-.search-item-content p {
+.search-stations-item-content p {
     color: var(--muted-foreground);
     font-size: 0.875rem;
 }

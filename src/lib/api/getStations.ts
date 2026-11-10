@@ -1,8 +1,8 @@
 // * Types:
-import type { SearchParams } from "@/modules/search/types/search-params.type";
-import type { SearchResult } from "@/modules/search/types/search-result.type";
+import type { SearchStationsParams } from "@/modules/search/types/search-stations-params.type";
+import type { SearchStationsResult } from "@/modules/search/types/search-stations-result.type";
 
-export async function getStations(params: SearchParams): Promise<SearchResult[]> {
+export async function getStations(params: SearchStationsParams): Promise<SearchStationsResult[]> {
     
     const { latitude, longitude, radius_m, limit } = params;
     if (![latitude, longitude, radius_m, limit].every(Number.isFinite) ||
@@ -27,9 +27,9 @@ export async function getStations(params: SearchParams): Promise<SearchResult[]>
     });
     if (!response.ok) throw new Error(`Geoapify API returned HTTP ${response.status}.`);
 
-    const data: { features: { properties: Partial<SearchResult> & { categories?: string[] } }[] } =
+    const data: { features: { properties: Partial<SearchStationsResult> & { categories?: string[] } }[] } =
         await response.json();
-    const stations = new Map<string, SearchResult>();
+    const stations = new Map<string, SearchStationsResult>();
 
     for (const { properties } of data.features) {
         const { place_id, formatted, lat, lon, distance, name, fuel_options, categories } = properties;

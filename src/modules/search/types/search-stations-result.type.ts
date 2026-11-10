@@ -1,4 +1,4 @@
-export type SearchResult = {
+export type SearchStationsResult = {
 	place_id: string;
 	formatted: string;
 	lat: number;

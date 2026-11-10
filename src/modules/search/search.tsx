@@ -17,13 +17,13 @@ import {
 import { LocateFixed } from "lucide-react";
 import { InputGroupButton } from "@/ui/components/input-group";
 import "./search.css";
-import SearchItem from "./ui/search-item";
-import type { SearchResult } from "./types/search-result.type";
+import SearchStationsItem from "./ui/search-stations-item";
+import type { SearchStationsResult } from "./types/search-stations-result.type";
 
 
 export const Search = ({ results = [], onSelect }: {
-    results?: SearchResult[];
-    onSelect?: (result: SearchResult) => void;
+    results?: SearchStationsResult[];
+    onSelect?: (result: SearchStationsResult) => void;
 }) => {
 
     const { t } = useTranslation();
@@ -47,7 +47,7 @@ export const Search = ({ results = [], onSelect }: {
             {results.length > 0 && (
                 <CommandList>
                     {results.map((result) => (
-                        <SearchItem key={result.place_id} props={result} onSelect={onSelect} />
+                        <SearchStationsItem key={result.place_id} props={result} onSelect={onSelect} />
                     ))}
                 </CommandList>
             )}

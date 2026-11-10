@@ -3,23 +3,23 @@
 // * UI:
 import { CommandItem } from "@/ui/components/command";
 import { MapPin } from "lucide-react";
-import "./search-item.css";
+import "./search-stations-item.css";
 
 // * Types:
-import type { SearchResult } from "../types/search-result.type";
+import type { SearchStationsResult } from "../types/search-stations-result.type";
 
-const SearchItem = ({ props, onSelect }: 
-    { props: SearchResult; onSelect?: (result: SearchResult) => void }
+const SearchStationsItem = ({ props, onSelect }: 
+    { props: SearchStationsResult; onSelect?: (result: SearchStationsResult) => void }
 ) => {
     return (
         <CommandItem
-            className="search-item"
+            className="search-stations-item"
             value={props.place_id}
             keywords={[props.name ?? "", props.formatted]}
             onSelect={() => onSelect?.(props)}
         >
             <MapPin aria-hidden="true" />
-            <div className="search-item-content">
+            <div className="search-stations-item-content">
                 <strong>{props.name || props.formatted}</strong>
                 {props.name && <p>{props.formatted}</p>}
             </div>
@@ -27,4 +27,4 @@ const SearchItem = ({ props, onSelect }:
     )
 }
 
-export default SearchItem;
+export default SearchStationsItem;
