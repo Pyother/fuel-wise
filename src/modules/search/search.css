@@ -1,5 +1,6 @@
 .search {
     flex: none;
+    min-width: 0;
     height: auto;
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
@@ -7,4 +8,25 @@
 
 .search [data-slot="command-input-wrapper"] {
     padding-bottom: 0.25rem;
+}
+
+.search [data-slot="command-list"] {
+    min-width: 0;
+    padding-inline: 0.25rem;
+    overflow-x: hidden;
+}
+
+.search-status:not(:empty), .search-pagination {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+}
+
+.search-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.search-pagination button:disabled {
+    opacity: 0.5;
 }

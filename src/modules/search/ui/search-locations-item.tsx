@@ -19,7 +19,9 @@ const SearchLocationsItem = ({ props, onSelect }:
             onSelect={() => onSelect?.(props)}
         >
             <MapPin aria-hidden="true" />
-            <span className="search-locations-item-content">{props.formatted}</span>
+            <span className="search-locations-item-content" title={props.formatted}>
+                {props.formatted}
+            </span>
         </CommandItem>
     )
 }

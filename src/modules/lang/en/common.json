@@ -1,6 +1,11 @@
 {
     "common_get_location": "Get location",
     "common_search": "Search",
+    "search_loading": "Searching…",
+    "search_error": "Search failed. Edit your query to try again.",
+    "search_empty": "No locations found.",
+    "search_previous": "Previous",
+    "search_next": "Next",
     "config_languages_label": "Languages",
     "config_languages_english_name": "English",
     "config_languages_german_name": "German",

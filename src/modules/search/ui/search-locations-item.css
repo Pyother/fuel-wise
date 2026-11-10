@@ -1,10 +1,15 @@
 .search-locations-item {
+    width: 100%;
+    min-width: 0;
+    height: 2rem;
     gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    padding: 0 var(--spacing-sm);
 }
 
 .search-locations-item-content {
     flex: 1;
     min-width: 0;
-    overflow-wrap: anywhere;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

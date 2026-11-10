@@ -1,6 +1,11 @@
 {
     "common_get_location": "Standort ermitteln",
     "common_search": "Suchen",
+    "search_loading": "Suche läuft…",
+    "search_error": "Die Suche ist fehlgeschlagen. Ändere deine Suchanfrage und versuche es erneut.",
+    "search_empty": "Keine Orte gefunden.",
+    "search_previous": "Zurück",
+    "search_next": "Weiter",
     "config_languages_label": "Sprachen",
     "config_languages_english_name": "Englisch",
     "config_languages_german_name": "Deutsch",

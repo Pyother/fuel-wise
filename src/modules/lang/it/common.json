@@ -1,6 +1,11 @@
 {
     "common_get_location": "Ottieni posizione",
     "common_search": "Cerca",
+    "search_loading": "Ricerca in corso…",
+    "search_error": "La ricerca non è riuscita. Modifica la ricerca per riprovare.",
+    "search_empty": "Nessun luogo trovato.",
+    "search_previous": "Precedente",
+    "search_next": "Successivo",
     "config_languages_label": "Lingue",
     "config_languages_english_name": "Inglese",
     "config_languages_german_name": "Tedesco",
