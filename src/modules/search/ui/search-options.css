@@ -2,7 +2,7 @@
     display: flex;
     align-items: end;
     gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    padding: 0;
     flex-shrink: 0;
     font-size: 0.875rem;
 }

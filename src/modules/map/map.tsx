@@ -18,6 +18,7 @@ import type { MapProps } from "./types/MapProps"
 // * UI:
 import { Fuel } from "lucide-react";
 import { Wrapper } from "./ui/wrapper";
+import { SearchPointMarker } from "@/modules/search/ui/search-point-marker";
 import "./map.css";
 
 setWorkerUrl(
@@ -29,23 +30,27 @@ export function Map(props: MapProps) {
     const { theme } = useTheme();
     const mapRef = useRef<MapRef>(null);
     const [loaded, setLoaded] = useState(false);
-    const { stations, selectedStation } = props;
+    const { stations, selectedStation, searchPoint } = props;
 
     useEffect(() => {
         const map = mapRef.current;
         if (!loaded || !map) return;
         map.stop();
-        if (!stations?.length) return;
-
-        const station = selectedStation ?? (stations.length === 1 ? stations[0] : null);
-        if (station) {
-            map.flyTo({ center: [station.lon, station.lat], zoom: 15, duration: 700 });
-        } else {
-            const bounds = new LngLatBounds();
-            stations.forEach(({ lon, lat }) => bounds.extend([lon, lat]));
-            map.fitBounds(bounds, { padding: 48, maxZoom: 15, duration: 700 });
+        if (selectedStation) {
+            map.flyTo({ center: [selectedStation.lon, selectedStation.lat], zoom: 15, duration: 700 });
+            return;
         }
-    }, [loaded, stations, selectedStation]);
+        const points: [number, number][] = (stations ?? []).map(({ lon, lat }) => [lon, lat]);
+        if (searchPoint) points.push([searchPoint.longitude, searchPoint.latitude]);
+        if (!points.length) return;
+        if (points.length === 1) {
+            map.flyTo({ center: points[0], zoom: 15, duration: 700 });
+            return;
+        }
+        const bounds = new LngLatBounds();
+        points.forEach(point => bounds.extend(point));
+        map.fitBounds(bounds, { padding: 48, maxZoom: 15, duration: 700 });
+    }, [loaded, stations, selectedStation, searchPoint]);
  
     return (
         <Wrapper 
@@ -65,6 +70,7 @@ export function Map(props: MapProps) {
                     process.env.NEXT_PUBLIC_MAP_STYLE_BRIGHT
                 }
             >
+                {searchPoint && <SearchPointMarker point={searchPoint} />}
                 {stations?.map((station) => (
                     <Marker key={station.place_id} longitude={station.lon} latitude={station.lat}>
                         <button type="button" className="map-station"

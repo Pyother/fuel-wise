@@ -14,10 +14,12 @@ import type { SearchLocationsResult } from "../types/search-locations-result.typ
 import type { SearchStationsResult } from "../types/search-stations-result.type";
 import type { SearchOptions, SearchPoint } from "../types/search-point.type";
 
-const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResult[]) => void) => {
+const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResult[]) => void,
+    onPointChange?: (point: SearchPoint | null) => void) => {
     const [query, setQuery] = useState("");
     const [city, setCity] = useState<SearchLocationsResult | null>(null);
-    const [point, setPoint] = useState<SearchPoint | null>(null);
+    const [point, updatePoint] = useState<SearchPoint | null>(null);
+    const setPoint = (value: SearchPoint | null) => { updatePoint(value); onPointChange?.(value); };
     const [options, setOptions] = useState<SearchOptions>({ radius_m: 5000, limit: 20 });
     const current = useCurrentLocation();
     const suggestions = useSuggestions(query, city, lang, !point && !current.loading);

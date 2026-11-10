@@ -31,5 +31,6 @@
     "search_locating": "Standort wird ermittelt…",
     "search_location_denied": "Standortzugriff verweigert. Erlaube den Zugriff oder suche nach einer Adresse.",
     "search_location_unavailable": "Dein Standort ist nicht verfügbar. Versuche es erneut oder suche nach einer Adresse.",
-    "search_location_timeout": "Zeitüberschreitung bei der Standortabfrage. Versuche es erneut."
+    "search_location_timeout": "Zeitüberschreitung bei der Standortabfrage. Versuche es erneut.",
+    "search_point": "Suchpunkt: {{location}}"
 }

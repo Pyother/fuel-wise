@@ -31,5 +31,6 @@
     "search_locating": "Localisation en cours…",
     "search_location_denied": "Accès à la position refusé. Autorisez l’accès ou recherchez une adresse.",
     "search_location_unavailable": "Votre position est indisponible. Réessayez ou recherchez une adresse.",
-    "search_location_timeout": "Le délai de localisation a expiré. Réessayez."
+    "search_location_timeout": "Le délai de localisation a expiré. Réessayez.",
+    "search_point": "Point de recherche : {{location}}"
 }

@@ -20,14 +20,16 @@ import "./search.css";
 // * Types:
 import type { SearchLocationsResult } from "./types/search-locations-result.type";
 import type { SearchStationsResult } from "./types/search-stations-result.type";
+import type { SearchPoint } from "./types/search-point.type";
 
-export const Search = ({ onSelect, onStationSelect, onStationsChange }: {
+export const Search = ({ onSelect, onStationSelect, onStationsChange, onPointChange }: {
     onSelect?: (result: SearchLocationsResult) => void;
     onStationSelect?: (result: SearchStationsResult) => void;
     onStationsChange?: (stations: SearchStationsResult[]) => void;
+    onPointChange?: (point: SearchPoint | null) => void;
 }) => {
     const { t, i18n } = useTranslation();
-    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange);
+    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange, onPointChange);
 
     return (
         <Command className="search" shouldFilter={false}>

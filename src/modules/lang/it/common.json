@@ -31,5 +31,6 @@
     "search_locating": "Rilevamento della posizione…",
     "search_location_denied": "Accesso alla posizione negato. Consenti l’accesso o cerca per indirizzo.",
     "search_location_unavailable": "La posizione non è disponibile. Riprova o cerca per indirizzo.",
-    "search_location_timeout": "Tempo scaduto per il rilevamento della posizione. Riprova."
+    "search_location_timeout": "Tempo scaduto per il rilevamento della posizione. Riprova.",
+    "search_point": "Punto di ricerca: {{location}}"
 }

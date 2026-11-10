@@ -6,13 +6,13 @@ import { useStations } from "@/modules/map/provider";
 import { Search } from "./search";
 
 export const SearchMap = () => {
-    const { stations, selectedStation, onStationsChange, setSelectedStation } = useStations();
+    const { stations, selectedStation, onStationsChange, setSelectedStation, searchPoint, setSearchPoint } = useStations();
 
     return (
         <>
-            <Search onStationsChange={onStationsChange} onStationSelect={setSelectedStation} />
+            <Search onStationsChange={onStationsChange} onStationSelect={setSelectedStation} onPointChange={setSearchPoint} />
             <Map fullScreen={false} stations={stations} selectedStation={selectedStation}
-                onStationSelect={setSelectedStation} />
+                onStationSelect={setSelectedStation} searchPoint={searchPoint} />
         </>
     )
 }

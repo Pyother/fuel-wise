@@ -31,5 +31,6 @@
     "search_locating": "Obteniendo tu ubicación…",
     "search_location_denied": "Acceso a la ubicación denegado. Permite el acceso o busca por dirección.",
     "search_location_unavailable": "Tu ubicación no está disponible. Inténtalo de nuevo o busca por dirección.",
-    "search_location_timeout": "Se agotó el tiempo para obtener la ubicación. Inténtalo de nuevo."
+    "search_location_timeout": "Se agotó el tiempo para obtener la ubicación. Inténtalo de nuevo.",
+    "search_point": "Punto de búsqueda: {{location}}"
 }

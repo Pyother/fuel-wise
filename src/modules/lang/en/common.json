@@ -31,5 +31,6 @@
     "search_locating": "Getting your location…",
     "search_location_denied": "Location access denied. Allow access or search by address.",
     "search_location_unavailable": "Your location is unavailable. Try again or search by address.",
-    "search_location_timeout": "Location request timed out. Try again."
+    "search_location_timeout": "Location request timed out. Try again.",
+    "search_point": "Search point: {{location}}"
 }
