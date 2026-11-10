@@ -3,7 +3,7 @@
     "common_search": "Suchen",
     "search_loading": "Suche läuft…",
     "search_stations_loading": "Tankstellen werden gesucht…",
-    "search_stations_empty": "Keine Tankstellen im Umkreis von 5 km gefunden.",
+    "search_stations_empty": "Keine Tankstellen im Umkreis von {{radius}} km gefunden.",
     "search_error": "Die Suche ist fehlgeschlagen. Ändere deine Suchanfrage und versuche es erneut.",
     "search_empty": "Keine Orte gefunden.",
     "search_previous": "Zurück",
@@ -19,5 +19,17 @@
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Tankstellenkarte",
     "modules_map_card_description": "Karte mit einer Liste der Tankstellen.",
-    "modules_map_card_action": "Zur Karte"
+    "modules_map_card_action": "Zur Karte",
+    "search_limit": "Ergebnisse (1–20)",
+    "search_radius": "Umkreis (km)",
+    "search_apply": "Anwenden",
+    "search_city": "Ort suchen…",
+    "search_street": "Straße oder Adresse…",
+    "search_street_hint": "Wähle eine Straße oder Adresse als Suchpunkt aus.",
+    "search_change_city": "Ort ändern",
+    "search_current_location": "Dein aktueller Standort",
+    "search_locating": "Standort wird ermittelt…",
+    "search_location_denied": "Standortzugriff verweigert. Erlaube den Zugriff oder suche nach einer Adresse.",
+    "search_location_unavailable": "Dein Standort ist nicht verfügbar. Versuche es erneut oder suche nach einer Adresse.",
+    "search_location_timeout": "Zeitüberschreitung bei der Standortabfrage. Versuche es erneut."
 }

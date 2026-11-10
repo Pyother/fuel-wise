@@ -9,7 +9,18 @@
 
 .search [data-slot="command-input-wrapper"] {
     flex-shrink: 0;
-    padding-bottom: 0.25rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0 0 0.25rem;
+}
+
+.search [data-slot="command-input-wrapper"] [data-slot="input-group"] {
+    min-height: calc(2.5rem + 2 * var(--spacing-sm));
+}
+
+.search [data-slot="command-input"] {
+    flex: 1;
+    min-width: 0;
 }
 
 .search [data-slot="command-list"] {
@@ -47,4 +58,25 @@
 
 .search-pagination button:disabled {
     opacity: 0.5;
+}
+
+.search-origin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    flex-shrink: 0;
+    font-size: 0.875rem;
+}
+
+.search-origin span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.search-origin button {
+    flex-shrink: 0;
+    text-decoration: underline;
 }

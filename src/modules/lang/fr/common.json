@@ -3,7 +3,7 @@
     "common_search": "Rechercher",
     "search_loading": "Recherche en cours…",
     "search_stations_loading": "Recherche de stations-service…",
-    "search_stations_empty": "Aucune station-service trouvée dans un rayon de 5 km.",
+    "search_stations_empty": "Aucune station-service trouvée dans un rayon de {{radius}} km.",
     "search_error": "La recherche a échoué. Modifiez votre recherche pour réessayer.",
     "search_empty": "Aucun lieu trouvé.",
     "search_previous": "Précédent",
@@ -19,5 +19,17 @@
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Carte des stations-service",
     "modules_map_card_description": "Carte contenant la liste des stations-service.",
-    "modules_map_card_action": "Accéder à la carte"
+    "modules_map_card_action": "Accéder à la carte",
+    "search_limit": "Résultats (1–20)",
+    "search_radius": "Rayon (km)",
+    "search_apply": "Appliquer",
+    "search_city": "Rechercher une localité…",
+    "search_street": "Rue ou adresse…",
+    "search_street_hint": "Sélectionnez une rue ou une adresse comme point de recherche.",
+    "search_change_city": "Changer de localité",
+    "search_current_location": "Votre position actuelle",
+    "search_locating": "Localisation en cours…",
+    "search_location_denied": "Accès à la position refusé. Autorisez l’accès ou recherchez une adresse.",
+    "search_location_unavailable": "Votre position est indisponible. Réessayez ou recherchez une adresse.",
+    "search_location_timeout": "Le délai de localisation a expiré. Réessayez."
 }

@@ -3,7 +3,7 @@
     "common_search": "Buscar",
     "search_loading": "Buscando…",
     "search_stations_loading": "Buscando estaciones de servicio…",
-    "search_stations_empty": "No se encontraron estaciones de servicio en un radio de 5 km.",
+    "search_stations_empty": "No se encontraron estaciones de servicio en un radio de {{radius}} km.",
     "search_error": "La búsqueda ha fallado. Modifica tu consulta para volver a intentarlo.",
     "search_empty": "No se encontraron lugares.",
     "search_previous": "Anterior",
@@ -19,5 +19,17 @@
     "config_modules_ranking_name": "Ranking",
     "modules_map_card_title": "Mapa de estaciones de servicio",
     "modules_map_card_description": "Mapa con la lista de estaciones de servicio.",
-    "modules_map_card_action": "Ir al mapa"
+    "modules_map_card_action": "Ir al mapa",
+    "search_limit": "Resultados (1–20)",
+    "search_radius": "Radio (km)",
+    "search_apply": "Aplicar",
+    "search_city": "Buscar una localidad…",
+    "search_street": "Calle o dirección…",
+    "search_street_hint": "Selecciona una calle o dirección como punto de búsqueda.",
+    "search_change_city": "Cambiar localidad",
+    "search_current_location": "Tu ubicación actual",
+    "search_locating": "Obteniendo tu ubicación…",
+    "search_location_denied": "Acceso a la ubicación denegado. Permite el acceso o busca por dirección.",
+    "search_location_unavailable": "Tu ubicación no está disponible. Inténtalo de nuevo o busca por dirección.",
+    "search_location_timeout": "Se agotó el tiempo para obtener la ubicación. Inténtalo de nuevo."
 }

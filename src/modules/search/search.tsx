@@ -8,9 +8,13 @@ import { useTranslation } from "react-i18next";
 
 // * UI:
 import { Command, CommandInput, CommandList } from "@/ui/components/command";
-import { LoaderCircle } from "lucide-react";
+import { InputGroupButton } from "@/ui/components/input-group";
+import { LocateFixed } from "lucide-react";
 import SearchLocationsItem from "./ui/search-locations-item";
 import SearchStationsItem from "./ui/search-stations-item";
+import { SearchOptions } from "./ui/search-options";
+import { SearchPagination } from "./ui/search-pagination";
+import { SearchStatus } from "./ui/search-status";
 import "./search.css";
 
 // * Types:
@@ -27,55 +31,48 @@ export const Search = ({ onSelect, onStationSelect, onStationsChange }: {
 
     return (
         <Command className="search" shouldFilter={false}>
-            <CommandInput
-                value={search.query}
-                onValueChange={search.setQuery}
-                maxLength={300}
-                placeholder={`${t("common_search")}...`}
-                aria-label={t("common_search")}
+            <SearchOptions value={search.options} onApply={search.setOptions} />
+            {search.city && (
+                <div className="search-origin" onKeyDown={event => event.stopPropagation()}>
+                    <span title={search.city.formatted}>{search.city.formatted}</span>
+                    <button type="button" onClick={search.changeCity}>{t("search_change_city")}</button>
+                </div>
+            )}
+            <CommandInput value={search.query} onValueChange={search.setQuery} maxLength={300}
+                placeholder={t(search.city ? "search_street" : "search_city")}
+                aria-label={t(search.city ? "search_street" : "search_city")}
+                trailing={
+                    <InputGroupButton type="button" size="icon-xs" disabled={search.isLocating}
+                        onKeyDown={event => event.stopPropagation()}
+                        aria-label={t("common_get_location")} title={t("common_get_location")}
+                        onClick={() => search.locate(t("search_current_location"))}>
+                        <LocateFixed aria-hidden="true" />
+                    </InputGroupButton>
+                }
             />
-            {(search.isSearching || search.selectedLocation) && (
+            {search.city && !search.point && !search.showResults && (
+                <p className="search-status">{t("search_street_hint")}</p>
+            )}
+            {search.showResults && (
                 <>
                     <CommandList ref={listRef} aria-busy={search.isLoading}>
-                        {search.stations.map((station) => (
+                        {search.stations.map(station => (
                             <SearchStationsItem key={station.place_id} props={station} onSelect={onStationSelect} />
                         ))}
-                        {search.results.map((result) => (
-                            <SearchLocationsItem
-                                key={result.place_id}
-                                props={result}
-                                onSelect={(location) => {
-                                    search.selectLocation(location);
-                                    onSelect?.(location);
-                                }}
-                            />
+                        {search.results.map(result => (
+                            <SearchLocationsItem key={result.place_id} props={result} onSelect={location => {
+                                search.selectLocation(location);
+                                onSelect?.(location);
+                            }} />
                         ))}
                     </CommandList>
-                    <div role="status" className="search-status">
-                        {search.isLoading ? (
-                            <>
-                                <LoaderCircle className="size-4 shrink-0 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-                                {t(search.selectedLocation ? "search_stations_loading" : "search_loading")}
-                            </>
-                        ) : search.error ? t("search_error") : search.selectedLocation ?
-                            search.stations.length === 0 ? t("search_stations_empty") : null :
-                            search.results.length === 0 ? t("search_empty") : null}
-                    </div>
+                    <SearchStatus loading={search.isLoading} locating={search.isLocating} hasPoint={!!search.point}
+                        error={search.error} empty={search.resultCount === 0} radius={search.options.radius_m} />
                     {search.resultCount > 0 && (
-                        <div className="search-pagination" style={{ visibility: search.pageCount > 1 ? "visible" : "hidden" }}>
-                            <button type="button" disabled={search.page === 1}
-                                onClick={() => search.setPage(search.page - 1)}>
-                                {t("search_previous")}
-                            </button>
-                            <span>{search.page} / {search.pageCount}</span>
-                            <button type="button" disabled={search.page === search.pageCount}
-                                onClick={() => search.setPage(search.page + 1)}>
-                                {t("search_next")}
-                            </button>
-                        </div>
+                        <SearchPagination page={search.page} pageCount={search.pageCount} onChange={search.setPage} />
                     )}
                 </>
             )}
         </Command>
-    )
-}
+    );
+};
