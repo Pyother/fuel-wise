@@ -5,7 +5,8 @@ import type { SearchLocationsResult } from "../types/search-locations-result.typ
 
 export async function getAddresses(query: string, city: SearchLocationsResult, lang: string): Promise<SearchLocationsResult[]> {
     if (typeof query !== "string" || query.length > 300 || !city ||
-        typeof city.formatted !== "string" || !Number.isFinite(city.lat) || !Number.isFinite(city.lon)) {
+        typeof city.formatted !== "string" || typeof city.place_id !== "string" || !city.place_id ||
+        !Number.isFinite(city.lat) || !Number.isFinite(city.lon)) {
         throw new Error("Invalid address search parameters.");
     }
     if (!query.trim()) return [];
@@ -14,27 +15,29 @@ export async function getAddresses(query: string, city: SearchLocationsResult, l
 
     const params = new URLSearchParams({
         text: `${query.trim()}, ${city.formatted}`,
+        filter: `place:${city.place_id}`,
         bias: `proximity:${city.lon},${city.lat}`,
         format: "json", limit: "10", lang, apiKey,
     });
-    if (city.country_code) params.set("filter", `countrycode:${city.country_code}`);
-    const response = await fetch(`https://api.geoapify.com/v1/geocode/search?${params}`, {
-        cache: "no-store", signal: AbortSignal.timeout(10_000),
-    });
-    if (!response.ok) throw new Error(`Geoapify API returned HTTP ${response.status}.`);
-    const data: { results: (Partial<SearchLocationsResult> & { result_type?: string; city?: string })[] } =
-        await response.json();
+    async function lookup(endpoint: "search" | "autocomplete") {
+        const response = await fetch(`https://api.geoapify.com/v1/geocode/${endpoint}?${params}`, {
+            cache: "no-store", signal: AbortSignal.timeout(10_000),
+        });
+        if (!response.ok) throw new Error(`Geoapify API returned HTTP ${response.status}.`);
+        const data: { results: (Partial<SearchLocationsResult> & { result_type?: string })[] } =
+            await response.json();
 
-    return data.results.flatMap((place) => {
-        const { place_id, formatted, lat, lon, result_type } = place;
-        if ((result_type !== "street" && result_type !== "building") ||
-            typeof place_id !== "string" || typeof formatted !== "string" ||
-            typeof lat !== "number" || !Number.isFinite(lat) ||
-            typeof lon !== "number" || !Number.isFinite(lon) ||
-            place.city?.toLocaleLowerCase() !== city.formatted.toLocaleLowerCase() ||
-            (city.country_code && place.country_code !== city.country_code)) return [];
-        const bounds = city.bbox;
-        if (bounds && (lat < bounds.lat1 || lat > bounds.lat2 || lon < bounds.lon1 || lon > bounds.lon2)) return [];
-        return [{ place_id, formatted, lat, lon }];
-    });
+        return data.results.flatMap(({ place_id, formatted, lat, lon, result_type }) => {
+            if (!["street", "building", "amenity", "amenity_name"].includes(result_type ?? "") ||
+                typeof place_id !== "string" || typeof formatted !== "string" ||
+                typeof lat !== "number" || !Number.isFinite(lat) ||
+                typeof lon !== "number" || !Number.isFinite(lon)) return [];
+            return [{ place_id, formatted, lat, lon }];
+        });
+    }
+
+    const matches = await lookup("search");
+    if (matches.length) return matches;
+    params.set("text", query.trim());
+    return lookup("autocomplete");
 }
