@@ -8,6 +8,7 @@ import { useSuggestions } from "./useSuggestions";
 import { useStationResults } from "./useStationResults";
 import { useCurrentLocation } from "./useCurrentLocation";
 import { useResultsPage } from "./useResultsPage";
+import { parseCoordinates } from "../lib/parseCoordinates";
 
 // * Types:
 import type { SearchLocationsResult } from "../types/search-locations-result.type";
@@ -22,14 +23,15 @@ const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResu
     const setPoint = (value: SearchPoint | null) => { updatePoint(value); onPointChange?.(value); };
     const [options, setOptions] = useState<SearchOptions>({ radius_m: 5000, limit: 20 });
     const current = useCurrentLocation();
-    const suggestions = useSuggestions(query, city, lang, !point && !current.loading);
+    const coordinates = point ? null : parseCoordinates(query);
+    const suggestions = useSuggestions(query, city, lang, !point && !coordinates && !current.loading);
     const stations = useStationResults(point, options, onStationsChange);
     const count = point ? stations.results.length : suggestions.results.length;
     const pagination = useResultsPage(count, JSON.stringify([query, city?.place_id, point, options]), undefined, point ? 5 : undefined);
     const clearStations = () => { setPoint(null); onStationsChange?.([]); };
 
     return {
-        query, city, point, options,
+        query, city, point, options, coordinates,
         ...pagination,
         resultCount: count,
         results: point ? [] : suggestions.results.slice(pagination.offset, pagination.offset + pagination.size),

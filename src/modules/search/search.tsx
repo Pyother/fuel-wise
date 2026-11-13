@@ -7,7 +7,7 @@ import type useSearch from "./hooks/useSearch";
 import { useTranslation } from "react-i18next";
 
 // * UI:
-import { Command, CommandInput, CommandList } from "@/ui/components/command";
+import { Command, CommandInput, CommandItem, CommandList } from "@/ui/components/command";
 import { InputGroupButton } from "@/ui/components/input-group";
 import { LocateFixed } from "lucide-react";
 import SearchLocationsItem from "./ui/search-locations-item";
@@ -51,7 +51,15 @@ export const Search = ({ onSelect, onStationSelect, search: { listRef, ...search
                     </InputGroupButton>
                 }
             />
-            {search.city && !search.point && !search.showResults && (
+            {search.coordinates && (
+                <CommandList>
+                    <CommandItem value={search.query} onSelect={() => {
+                        if (search.coordinates) search.pickPoint(search.coordinates.latitude, search.coordinates.longitude);
+                        if (picking) onTogglePick();
+                    }}>{search.query}</CommandItem>
+                </CommandList>
+            )}
+            {search.city && !search.coordinates && !search.point && !search.showResults && (
                 <p className="search-status">{t("search_street_hint")}</p>
             )}
             {search.showResults && (
