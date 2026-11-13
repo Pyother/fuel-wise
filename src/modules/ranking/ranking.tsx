@@ -17,7 +17,7 @@ import "./ranking.css";
 
 const Ranking = () => {
     const { t } = useTranslation();
-    const { searchPoint, stations, selectedStation, setSelectedStation } = useStations();
+    const { searchPoint, stations, selectedRanking, toggleRanking } = useStations();
     const { listRef, ...ranking } = useRanking(searchPoint, stations);
     return (
         <aside id="ranking-panel" className="ranking" aria-label={t("ranking_title")}>
@@ -40,7 +40,7 @@ const Ranking = () => {
                 <ol start={ranking.offset + 1}>
                     {ranking.items.map((item, index) => (
                         <RankingItem key={item.station.place_id} item={item} rank={ranking.offset + index + 1}
-                            selected={selectedStation?.place_id === item.station.place_id} onSelect={setSelectedStation} />
+                            selected={selectedRanking?.station.place_id === item.station.place_id} onSelect={toggleRanking} />
                     ))}
                 </ol>
             </div>

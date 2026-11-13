@@ -19,8 +19,8 @@ export async function getRanking(origin: RouteParams["origin"], stations: Search
     for (let offset = 0; offset < stations.length; offset += 4) {
         results.push(...await Promise.all(stations.slice(offset, offset + 4).map(async station => {
             try {
-                const { distance, time } = await getRoute({ origin, destination: { lat: station.lat, lon: station.lon } });
-                return { station, route: { distance, time } };
+                const route = await getRoute({ origin, destination: { lat: station.lat, lon: station.lon } });
+                return { station, route };
             } catch {
                 return { station, route: null };
             }

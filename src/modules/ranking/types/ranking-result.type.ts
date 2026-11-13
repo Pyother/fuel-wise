@@ -4,5 +4,5 @@ import type { SearchStationsResult } from "@/modules/search/types/search-station
 
 export type RankingResult = {
     station: SearchStationsResult;
-    route: Pick<RouteResult, "distance" | "time"> | null;
+    route: RouteResult | null;
 };
