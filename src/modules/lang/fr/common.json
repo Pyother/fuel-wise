@@ -35,7 +35,7 @@
     "search_location_timeout": "Le délai de localisation a expiré. Réessayez.",
     "search_point": "Point de recherche : {{location}}",
     "ranking_title": "Classement des stations",
-    "ranking_description": "Stations trouvées, classées par distance routière.",
+    "ranking_description": "Prix du Pb95 croissant, puis distance par la route en cas d’égalité.",
     "ranking_from": "Depuis : {{location}}",
     "ranking_distance": "Distance routière",
     "ranking_time": "Temps de trajet estimé",

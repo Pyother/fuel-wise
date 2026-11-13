@@ -2,7 +2,8 @@
 import { Trans } from "react-i18next";
 
 // * UI:
-import { Droplet, Fuel, Info } from "lucide-react";
+import { Droplet, Fuel } from "lucide-react";
+import { PriceAmount } from "./price-amount";
 import "./price-item.css";
 
 // * Types:
@@ -15,7 +16,6 @@ const Price = ({ prices }: { prices?: StationPrice["prices"] | null }) => prices
         <dl className="price-item">
             {(Object.keys(labels) as (keyof typeof labels)[]).map(fuel => {
                 if (prices[fuel] == null) return null;
-                const [main, tail] = String(prices[fuel]).split(/(?<=\.\d{3})/);
                 const Icon = fuel === "lpg" ? Droplet : Fuel;
                 return (
                     <div key={fuel} className={fuel === "diesel" ? "bg-muted" : "bg-primary/10"}>
@@ -24,7 +24,7 @@ const Price = ({ prices }: { prices?: StationPrice["prices"] | null }) => prices
                             {labels[fuel]}
                         </dt>
                         <dd className="border-l border-border pl-2 text-sm font-semibold tabular-nums">
-                            {main}{tail && <sup>{tail}</sup>}
+                            <PriceAmount value={prices[fuel]} />
                         </dd>
                     </div>
                 );

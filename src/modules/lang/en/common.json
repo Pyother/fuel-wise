@@ -35,7 +35,7 @@
     "search_location_timeout": "Location request timed out. Try again.",
     "search_point": "Search point: {{location}}",
     "ranking_title": "Station ranking",
-    "ranking_description": "Searched stations, sorted by driving distance.",
+    "ranking_description": "Lowest Pb95 price first, then shortest driving distance.",
     "ranking_from": "From: {{location}}",
     "ranking_distance": "Driving distance",
     "ranking_time": "Estimated driving time",

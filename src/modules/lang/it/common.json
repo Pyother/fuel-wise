@@ -35,7 +35,7 @@
     "search_location_timeout": "Tempo scaduto per il rilevamento della posizione. Riprova.",
     "search_point": "Punto di ricerca: {{location}}",
     "ranking_title": "Classifica dei distributori",
-    "ranking_description": "Stazioni trovate, ordinate per distanza stradale.",
+    "ranking_description": "Prima il prezzo più basso della Pb95, poi la distanza stradale a parità di prezzo.",
     "ranking_from": "Da: {{location}}",
     "ranking_distance": "Distanza stradale",
     "ranking_time": "Tempo di guida stimato",

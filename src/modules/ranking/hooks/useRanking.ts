@@ -42,7 +42,7 @@ export function useRanking(point: SearchPoint | null, stations: SearchStationsRe
 
     const ready = !!key && response?.key === key && response.attempt === attempt;
     const results = ready ? response.results : [];
-    const pagination = useResultsPage(results.length, key, ".ranking-item");
+    const pagination = useResultsPage(results.length, key, ".ranking-list li");
     return {
         ...pagination,
         items: results.slice(pagination.offset, pagination.offset + pagination.size),

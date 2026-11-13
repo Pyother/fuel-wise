@@ -10,7 +10,8 @@ import { useRanking } from "./hooks/useRanking";
 import { useTranslation } from "react-i18next";
 
 // * UI:
-import { LoaderCircle } from "lucide-react";
+import { ChartColumn, LoaderCircle, MapPin } from "lucide-react";
+import { Button } from "@/ui/components/button";
 import RankingItem from "./ui/ranking-item";
 import "./ranking.css";
 
@@ -21,10 +22,10 @@ const Ranking = () => {
     return (
         <aside id="ranking-panel" className="ranking" aria-label={t("ranking_title")}>
             <header>
-                <h2>{t("ranking_title")}</h2>
+                <h2 className="flex items-center gap-2"><ChartColumn className="size-5" aria-hidden="true" />{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>
                 {searchPoint && <p className="ranking-origin" title={searchPoint.label}>
-                    {t("ranking_from", { location: searchPoint.label })}
+                    <MapPin className="mr-1 inline size-4" aria-hidden="true" />{t("ranking_from", { location: searchPoint.label })}
                 </p>}
             </header>
             <div role="status" className="ranking-status">
@@ -43,11 +44,11 @@ const Ranking = () => {
                     ))}
                 </ol>
             </div>
-            {ranking.count > 0 && <div className="ranking-pagination" style={{ visibility: ranking.pageCount > 1 ? "visible" : "hidden" }}>
-                <button type="button" disabled={ranking.page === 1} onClick={() => ranking.setPage(ranking.page - 1)}>{t("search_previous")}</button>
+            {ranking.count > 0 && <nav aria-label={t("ranking_title")} className="ranking-pagination" style={{ visibility: ranking.pageCount > 1 ? "visible" : "hidden" }}>
+                <Button variant="ghost" size="sm" disabled={ranking.page === 1} onClick={() => ranking.setPage(ranking.page - 1)}>{t("search_previous")}</Button>
                 <span>{ranking.page} / {ranking.pageCount}</span>
-                <button type="button" disabled={ranking.page === ranking.pageCount} onClick={() => ranking.setPage(ranking.page + 1)}>{t("search_next")}</button>
-            </div>}
+                <Button variant="ghost" size="sm" disabled={ranking.page === ranking.pageCount} onClick={() => ranking.setPage(ranking.page + 1)}>{t("search_next")}</Button>
+            </nav>}
         </aside>
     );
 };

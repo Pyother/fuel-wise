@@ -14,7 +14,9 @@ export function useResultsPage(count: number, key: string, itemSelector = '[data
         const observer = new ResizeObserver(() => {
             const items = list.querySelectorAll<HTMLElement>(itemSelector);
             const height = Math.max(...Array.from(items, item => item.getBoundingClientRect().height));
-            if (height > 0 && list.clientHeight > 0) setSize(Math.max(1, Math.floor(list.clientHeight / height)));
+            const group = items[0]?.parentElement;
+            const gap = group ? parseFloat(getComputedStyle(group).rowGap) || 0 : 0;
+            if (height > 0 && list.clientHeight > 0) setSize(Math.max(1, Math.floor((list.clientHeight + gap) / (height + gap))));
         });
         observer.observe(list);
         list.querySelectorAll(itemSelector).forEach(item => observer.observe(item));

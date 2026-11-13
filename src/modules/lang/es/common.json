@@ -35,7 +35,7 @@
     "search_location_timeout": "Se agotó el tiempo para obtener la ubicación. Inténtalo de nuevo.",
     "search_point": "Punto de búsqueda: {{location}}",
     "ranking_title": "Ranking de gasolineras",
-    "ranking_description": "Estaciones encontradas, ordenadas por distancia por carretera.",
+    "ranking_description": "Primero el precio más bajo de Pb95 y, en caso de empate, la menor distancia por carretera.",
     "ranking_from": "Desde: {{location}}",
     "ranking_distance": "Distancia por carretera",
     "ranking_time": "Tiempo de conducción estimado",

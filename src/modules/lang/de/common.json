@@ -35,7 +35,7 @@
     "search_location_timeout": "Zeitüberschreitung bei der Standortabfrage. Versuche es erneut.",
     "search_point": "Suchpunkt: {{location}}",
     "ranking_title": "Tankstellen-Ranking",
-    "ranking_description": "Gefundene Tankstellen nach Fahrstrecke sortiert.",
+    "ranking_description": "Nach Pb95-Preis sortiert, bei gleichem Preis nach Fahrstrecke.",
     "ranking_from": "Von: {{location}}",
     "ranking_distance": "Fahrstrecke",
     "ranking_time": "Geschätzte Fahrzeit",

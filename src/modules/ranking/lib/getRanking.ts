@@ -29,6 +29,9 @@ export async function getRanking(origin: RouteParams["origin"], stations: Search
     return results.sort((a, b) => {
         if (!a.route) return b.route ? 1 : 0;
         if (!b.route) return -1;
+        const priceA = a.station.prices?.pb95 ?? Infinity;
+        const priceB = b.station.prices?.pb95 ?? Infinity;
+        if (priceA !== priceB) return priceA - priceB;
         return a.route.distance - b.route.distance || a.route.time - b.route.time;
     });
 }
