@@ -69,6 +69,11 @@ export function Map(props: MapProps) {
         >
             <MapLibreMap
                 ref={mapRef}
+                cursor={props.onPick ? "crosshair" : undefined}
+                onClick={props.onPick && (event => {
+                    const { lat, lng } = event.lngLat.wrap();
+                    props.onPick?.(lat, lng);
+                })}
                 onLoad={() => setLoaded(true)}
                 initialViewState={{
                     longitude: -100,
@@ -93,7 +98,7 @@ export function Map(props: MapProps) {
                             aria-label={station.name || station.formatted}
                             title={station.name ? `${station.name} — ${station.formatted}` : station.formatted}
                             aria-pressed={selectedStation?.place_id === station.place_id}
-                            onClick={() => props.onStationSelect?.(station)}>
+                            onClick={() => { if (!props.onPick) props.onStationSelect?.(station); }}>
                             <Fuel size={18} aria-hidden="true" />
                         </button>
                     </Marker>

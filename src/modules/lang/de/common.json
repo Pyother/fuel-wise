@@ -24,6 +24,7 @@
     "search_limit": "Ergebnisse (1–20)",
     "search_radius": "Umkreis (km)",
     "search_apply": "Anwenden",
+    "search_pick_point": "Ort auf der Karte auswählen",
     "search_city": "Ort suchen…",
     "search_street": "Straße oder Adresse…",
     "search_street_hint": "Wähle eine Straße oder Adresse als Suchpunkt aus.",

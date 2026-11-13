@@ -66,6 +66,14 @@ const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResu
             setOptions(value);
             if (point) onStationsChange?.([]);
         },
+        pickPoint: (latitude: number, longitude: number) => {
+            current.cancel();
+            const label = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+            setCity(null);
+            onStationsChange?.([]);
+            setQuery(label);
+            setPoint({ latitude, longitude, label });
+        },
         locate: (label: string) => {
             setCity(null);
             setQuery("");

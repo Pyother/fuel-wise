@@ -24,6 +24,7 @@
     "search_limit": "Resultados (1–20)",
     "search_radius": "Radio (km)",
     "search_apply": "Aplicar",
+    "search_pick_point": "Seleccionar una ubicación en el mapa",
     "search_city": "Buscar una localidad…",
     "search_street": "Calle o dirección…",
     "search_street_hint": "Selecciona una calle o dirección como punto de búsqueda.",

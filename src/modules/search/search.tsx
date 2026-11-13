@@ -1,7 +1,7 @@
 "use client";
 
 // * Hooks:
-import useSearch from "./hooks/useSearch";
+import type useSearch from "./hooks/useSearch";
 
 // * Translations:
 import { useTranslation } from "react-i18next";
@@ -20,20 +20,19 @@ import "./search.css";
 // * Types:
 import type { SearchLocationsResult } from "./types/search-locations-result.type";
 import type { SearchStationsResult } from "./types/search-stations-result.type";
-import type { SearchPoint } from "./types/search-point.type";
 
-export const Search = ({ onSelect, onStationSelect, onStationsChange, onPointChange }: {
+export const Search = ({ onSelect, onStationSelect, search: { listRef, ...search }, picking, onTogglePick }: {
     onSelect?: (result: SearchLocationsResult) => void;
     onStationSelect?: (result: SearchStationsResult) => void;
-    onStationsChange?: (stations: SearchStationsResult[]) => void;
-    onPointChange?: (point: SearchPoint | null) => void;
+    search: ReturnType<typeof useSearch>;
+    picking: boolean;
+    onTogglePick: () => void;
 }) => {
-    const { t, i18n } = useTranslation();
-    const { listRef, ...search } = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange, onPointChange);
+    const { t } = useTranslation();
 
     return (
         <Command id="search-panel" className="search" shouldFilter={false}>
-            <SearchOptions value={search.options} onApply={search.setOptions} />
+            <SearchOptions value={search.options} onApply={search.setOptions} picking={picking} onTogglePick={onTogglePick} />
             {search.city && (
                 <div className="search-origin" onKeyDown={event => event.stopPropagation()}>
                     <span title={search.city.formatted}>{search.city.formatted}</span>

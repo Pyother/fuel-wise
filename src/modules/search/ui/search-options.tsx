@@ -8,8 +8,11 @@ import type { SearchOptions as Options } from "../types/search-point.type";
 
 // * UI:
 import "./search-options.css";
+import { MapPin } from "lucide-react";
 
-export function SearchOptions({ value, onApply }: { value: Options; onApply: (value: Options) => void }) {
+export function SearchOptions({ value, onApply, picking, onTogglePick }: {
+    value: Options; onApply: (value: Options) => void; picking: boolean; onTogglePick: () => void;
+}) {
     const { t } = useTranslation();
     return (
         <form className="search-options" onKeyDown={event => event.stopPropagation()} onSubmit={(event) => {
@@ -26,6 +29,10 @@ export function SearchOptions({ value, onApply }: { value: Options; onApply: (va
                 <input name="radius" type="number" min={0.1} max={50} step={0.1} required defaultValue={value.radius_m / 1000} />
             </label>
             <button type="submit">{t("search_apply")}</button>
+            <button type="button" aria-pressed={picking} aria-label={t("search_pick_point")}
+                title={t("search_pick_point")} onClick={onTogglePick}>
+                <MapPin size={16} aria-hidden="true" />
+            </button>
         </form>
     );
 }
