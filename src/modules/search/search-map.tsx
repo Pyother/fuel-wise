@@ -5,13 +5,11 @@ import { Map } from "@/modules/map/map";
 import { useStations } from "@/modules/map/provider";
 import { Search } from "./search";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import useSearch from "./hooks/useSearch";
+import { useSearchState } from "./provider";
 
 export const SearchMap = () => {
-    const { stations, selectedStation, onStationsChange, setSelectedStation, searchPoint, setSearchPoint } = useStations();
-    const { i18n } = useTranslation();
-    const search = useSearch(i18n.resolvedLanguage ?? "en", onStationsChange, setSearchPoint);
+    const { stations, selectedStation, setSelectedStation, searchPoint } = useStations();
+    const search = useSearchState();
     const [picking, setPicking] = useState(false);
 
     return (

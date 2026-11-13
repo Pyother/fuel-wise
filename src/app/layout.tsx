@@ -12,6 +12,7 @@ import { geistMono, geistSans, inter } from "@/ui/fonts";
 import LangProvider from "@/modules/lang/provider";
 import ThemeProvider from "@/modules/theme/provider";
 import StationsProvider from "@/modules/map/provider";
+import { SearchProvider } from "@/modules/search/provider";
 import { Navigation } from "@/modules/navigation/navigation";
 
 // * Lib:
@@ -37,7 +38,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <LangProvider>
                     <ThemeProvider initialTheme={initialTheme}>
                         <StationsProvider>
-                            <Navigation>{children}</Navigation>
+                            <SearchProvider>
+                                <Navigation>{children}</Navigation>
+                            </SearchProvider>
                         </StationsProvider>
                     </ThemeProvider>
                 </LangProvider>
