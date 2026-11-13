@@ -1,4 +1,5 @@
 {
+    "search_station_prices_unavailable": "No fuel price information for this station.",
     "common_get_location": "Get location",
     "common_search": "Search",
     "search_loading": "Searching…",

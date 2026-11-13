@@ -25,15 +25,15 @@ const useSearch = (lang = "en", onStationsChange?: (stations: SearchStationsResu
     const suggestions = useSuggestions(query, city, lang, !point && !current.loading);
     const stations = useStationResults(point, options, onStationsChange);
     const count = point ? stations.results.length : suggestions.results.length;
-    const pagination = useResultsPage(count, JSON.stringify([query, city?.place_id, point, options]));
+    const pagination = useResultsPage(count, JSON.stringify([query, city?.place_id, point, options]), undefined, point ? 5 : undefined);
     const clearStations = () => { setPoint(null); onStationsChange?.([]); };
 
     return {
         query, city, point, options,
         ...pagination,
         resultCount: count,
-        results: suggestions.results.slice(pagination.offset, pagination.offset + pagination.size),
-        stations: stations.results.slice(pagination.offset, pagination.offset + pagination.size),
+        results: point ? [] : suggestions.results.slice(pagination.offset, pagination.offset + pagination.size),
+        stations: point ? stations.results.slice(pagination.offset, pagination.offset + pagination.size) : [],
         showResults: !!point || suggestions.active || current.loading || !!current.error,
         isLoading: current.loading || suggestions.loading || stations.loading,
         isLocating: current.loading,

@@ -1,0 +1,15 @@
+.price-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(8.5rem, 45%)), 1fr));
+    gap: 0.25rem;
+    margin-block: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.price-item > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-md);
+}

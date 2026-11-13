@@ -2,6 +2,7 @@
 
 // * UI:
 import { CommandItem } from "@/ui/components/command";
+import Price from "@/modules/prices/ui/price-item";
 import { MapPin } from "lucide-react";
 import "./search-stations-item.css";
 
@@ -20,8 +21,11 @@ const SearchStationsItem = ({ props, onSelect }:
         >
             <MapPin aria-hidden="true" />
             <div className="search-stations-item-content">
-                <strong>{props.name || props.formatted}</strong>
-                {props.name && <p>{props.formatted}</p>}
+                <div className="flex items-baseline gap-2">
+                    <strong className="shrink-0 max-w-full">{props.name || props.formatted}</strong>
+                    {props.name && <p title={props.formatted}>{props.formatted}</p>}
+                </div>
+                <Price prices={props.prices} />
             </div>
         </CommandItem>
     )

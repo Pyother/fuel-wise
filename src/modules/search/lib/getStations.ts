@@ -1,5 +1,8 @@
 "use server";
 
+// * Lib:
+import getPrice from "@/modules/prices/lib/getPrice";
+
 // * Types:
 import type { SearchStationsParams } from "@/modules/search/types/search-stations-params.type";
 import type { SearchStationsResult } from "@/modules/search/types/search-stations-result.type";
@@ -29,7 +32,12 @@ export async function getStations(params: SearchStationsParams): Promise<SearchS
     });
     if (!response.ok) throw new Error(`Geoapify API returned HTTP ${response.status}.`);
 
-    const data: { features: { properties: Partial<SearchStationsResult> & { categories?: string[] } }[] } =
+    type Place = Omit<Partial<SearchStationsResult>, "brand"> & {
+        categories?: string[];
+        brand?: string | { name?: string };
+        datasource?: { raw?: { brand?: string } };
+    };
+    const data: { features: { properties: Place }[] } =
         await response.json();
     const stations = new Map<string, SearchStationsResult>();
 
@@ -42,12 +50,20 @@ export async function getStations(params: SearchStationsParams): Promise<SearchS
             typeof distance !== "number" || !Number.isFinite(distance) ||
             distance < 0 || distance > radius_m || stations.has(place_id)) continue;
 
+        const brand = (typeof properties.brand === "string" ? properties.brand : properties.brand?.name)
+            || properties.datasource?.raw?.brand;
         stations.set(place_id, {
             place_id, formatted, lat, lon, distance,
             ...(name !== undefined && { name }),
+            ...(typeof brand === "string" && { brand }),
+            ...(typeof properties.country_code === "string" && { country_code: properties.country_code }),
             ...(fuel_options !== undefined && { fuel_options }),
         });
     }
 
-    return [...stations.values()].sort((a, b) => a.distance - b.distance).slice(0, limit);
+    const results = [...stations.values()].sort((a, b) => a.distance - b.distance).slice(0, limit);
+    return Promise.all(results.map(async station => ({
+        ...station,
+        prices: (await getPrice(station))?.prices ?? null,
+    })));
 }

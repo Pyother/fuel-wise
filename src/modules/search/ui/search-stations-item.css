@@ -1,8 +1,17 @@
+[cmdk-list-sizer]:has(> .search-stations-item) {
+    display: grid;
+    gap: 0.5rem;
+}
+
 .search-stations-item {
     min-width: 0;
-    height: calc(2.5rem + 2 * var(--spacing-sm));
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--border);
+}
+
+.search-stations-item > svg:last-child {
+    display: none;
 }
 
 .search-stations-item-content {
@@ -20,5 +29,5 @@
 
 .search-stations-item-content p {
     color: var(--muted-foreground);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }

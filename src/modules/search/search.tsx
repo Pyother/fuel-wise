@@ -57,7 +57,7 @@ export const Search = ({ onSelect, onStationSelect, onStationsChange, onPointCha
             )}
             {search.showResults && (
                 <>
-                    <CommandList ref={listRef} aria-busy={search.isLoading}>
+                    <CommandList key={search.page} ref={listRef} aria-busy={search.isLoading}>
                         {search.stations.map(station => (
                             <SearchStationsItem key={station.place_id} props={station} onSelect={onStationSelect} />
                         ))}
