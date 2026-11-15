@@ -31,6 +31,7 @@ const Price = ({ prices }: { prices?: StationPrice["prices"] | null }) => prices
             })}
         </dl>
         <span className="block text-right text-xs text-muted-foreground">€/L</span>
+        <p className="text-xs text-muted-foreground"><Trans i18nKey="prices_sample_notice" /></p>
     </div>
 ) : (
     <span className="flex items-center gap-1 text-xs text-muted-foreground">

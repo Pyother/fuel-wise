@@ -24,6 +24,7 @@ const Ranking = () => {
             <header>
                 <h2 className="flex items-center gap-2"><ChartColumn className="size-5" aria-hidden="true" />{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>
+                <p>{t("prices_sample_notice")}</p>
                 {searchPoint && <p className="ranking-origin" title={searchPoint.label}>
                     <MapPin className="mr-1 inline size-4" aria-hidden="true" />{t("ranking_from", { location: searchPoint.label })}
                 </p>}

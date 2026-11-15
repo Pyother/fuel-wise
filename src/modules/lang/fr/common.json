@@ -1,4 +1,5 @@
 {
+    "prices_sample_notice": "Prix fictifs — ce ne sont pas les prix actuels des stations.",
     "search_station_prices_unavailable": "Aucun prix de carburant disponible pour cette station.",
     "common_get_location": "Obtenir la position",
     "common_search": "Rechercher",
