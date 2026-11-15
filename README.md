@@ -1,6 +1,6 @@
 # Fuel Wise
 
-Find nearby fuel stations and compare the estimated cost of buying 40 L of Pb95 plus driving to each station. Built with Next.js, React, MapLibre and [Geoapify](https://www.geoapify.com/).
+An application serving as a demo demonstrating the use of [Geoapify MCP Server](https://www.geoapify.com/mcp/). Built with Next.js, React, MapLibre and [Geoapify](https://www.geoapify.com/).
 
 **All fuel prices are synthetic sample data, not current or verified station prices.** Locations and driving routes come from Geoapify. Sample prices are assigned deterministically by station ID from matching brand samples, preferring the station's country. Unknown brands can have no price.
 
@@ -40,7 +40,7 @@ npm run build
 npm start
 ```
 
-Network access is required for Geoapify. Production builds also download Google Fonts through `next/font/google`.
+Network access is required for Geoapify. 
 
 ## Cost model
 
@@ -51,8 +51,6 @@ fuel cost = 40 L × sample price (EUR/L)
 driving cost = distance (km) × consumption (L/100 km) / 100 × sample price (EUR/L)
 total cost = fuel cost + driving cost
 ```
-
-Fuel consumed on the trip is valued at the destination station's sample price. Results sort by unrounded total cost; equal totals prefer the shorter drive. Amounts display in EUR rounded to two decimal places. Missing routes or Pb95 prices prevent an estimate: these stations appear last without a rank. Changing consumption reuses fetched routes.
 
 ## Architecture
 
