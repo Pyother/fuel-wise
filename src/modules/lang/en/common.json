@@ -1,4 +1,5 @@
 {
+    "ranking_consumption": "Consumption (L/100 km)",
     "prices_sample_notice": "Sample prices — not current station prices.",
     "search_station_prices_unavailable": "No fuel price information for this station.",
     "common_get_location": "Get location",

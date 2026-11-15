@@ -17,7 +17,7 @@ import "./ranking.css";
 
 const Ranking = () => {
     const { t } = useTranslation();
-    const { searchPoint, stations, selectedRanking, toggleRanking } = useStations();
+    const { searchPoint, stations, selectedRanking, toggleRanking, consumption, setConsumption } = useStations();
     const { listRef, ...ranking } = useRanking(searchPoint, stations);
     return (
         <aside id="ranking-panel" className="ranking" aria-label={t("ranking_title")}>
@@ -25,6 +25,19 @@ const Ranking = () => {
                 <h2 className="flex items-center gap-2"><ChartColumn className="size-5" aria-hidden="true" />{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>
                 <p>{t("prices_sample_notice")}</p>
+                <form className="flex flex-wrap items-end gap-2" onSubmit={event => {
+                    event.preventDefault();
+                    const value = Number(new FormData(event.currentTarget).get("consumption"));
+                    if (Number.isFinite(value) && value >= 0.1 && value <= 100) setConsumption(value);
+                }}>
+                    <label className="grid gap-1 text-sm">
+                        {t("ranking_consumption")}
+                        <input className="w-32 rounded-md border border-border bg-background px-2 py-1"
+                            name="consumption" type="number" min={0.1} max={100} step={0.1}
+                            required defaultValue={consumption} />
+                    </label>
+                    <Button type="submit" variant="outline" size="sm">{t("search_apply")}</Button>
+                </form>
                 {searchPoint && <p className="ranking-origin" title={searchPoint.label}>
                     <MapPin className="mr-1 inline size-4" aria-hidden="true" />{t("ranking_from", { location: searchPoint.label })}
                 </p>}

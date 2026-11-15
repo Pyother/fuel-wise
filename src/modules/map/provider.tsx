@@ -11,6 +11,8 @@ import type { SearchPoint } from "@/modules/search/types/search-point.type";
 
 const StationsContext = createContext<{
     stations: SearchStationsResult[];
+    consumption: number;
+    setConsumption: (value: number) => void;
     searchPoint: SearchPoint | null;
     setSearchPoint: (point: SearchPoint | null) => void;
     selectedStation: SearchStationsResult | null;
@@ -22,6 +24,7 @@ const StationsContext = createContext<{
 
 export default function StationsProvider({ children }: { children: ReactNode }) {
     const [stations, setStations] = useState<SearchStationsResult[]>([]);
+    const [consumption, setConsumption] = useState(7);
     const [searchPoint, setSearchPoint] = useState<SearchPoint | null>(null);
     const [selection, setSelection] = useState<{ station: SearchStationsResult; ranking: RankingResult | null } | null>(null);
     const setSelectedStation = useCallback((station: SearchStationsResult | null) => {
@@ -36,9 +39,9 @@ export default function StationsProvider({ children }: { children: ReactNode }) 
         setSelection(null);
     }, []);
     const value = useMemo(() => ({
-        stations, selectedStation: selection?.station ?? null, selectedRanking: selection?.ranking ?? null,
+        stations, consumption, setConsumption, selectedStation: selection?.station ?? null, selectedRanking: selection?.ranking ?? null,
         toggleRanking, onStationsChange, setSelectedStation, searchPoint, setSearchPoint,
-    }), [stations, selection, toggleRanking, onStationsChange, setSelectedStation, searchPoint]);
+    }), [stations, consumption, selection, toggleRanking, onStationsChange, setSelectedStation, searchPoint]);
 
     return <StationsContext.Provider value={value}>{children}</StationsContext.Provider>;
 }
