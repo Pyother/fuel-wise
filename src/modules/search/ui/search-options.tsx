@@ -9,6 +9,8 @@ import type { SearchOptions as Options } from "../types/search-point.type";
 // * UI:
 import "./search-options.css";
 import { MapPin } from "lucide-react";
+import { Input } from "@/ui/components/input";
+import { Button } from "@/ui/components/button";
 
 export function SearchOptions({ value, onApply, picking, onTogglePick }: {
     value: Options; onApply: (value: Options) => void; picking: boolean; onTogglePick: () => void;
@@ -22,17 +24,17 @@ export function SearchOptions({ value, onApply, picking, onTogglePick }: {
         }}>
             <label>
                 {t("search_limit")}
-                <input name="limit" type="number" min={1} max={20} step={1} required defaultValue={value.limit} />
+                <Input name="limit" type="number" min={1} max={20} step={1} required defaultValue={value.limit} />
             </label>
             <label>
                 {t("search_radius")}
-                <input name="radius" type="number" min={0.1} max={50} step={0.1} required defaultValue={value.radius_m / 1000} />
+                <Input name="radius" type="number" min={0.1} max={50} step={0.1} required defaultValue={value.radius_m / 1000} />
             </label>
-            <button type="submit">{t("search_apply")}</button>
-            <button type="button" aria-pressed={picking} aria-label={t("search_pick_point")}
+            <Button type="submit">{t("search_apply")}</Button>
+            <Button type="button" variant="outline" size="icon" aria-pressed={picking} aria-label={t("search_pick_point")}
                 title={t("search_pick_point")} onClick={onTogglePick}>
                 <MapPin size={16} aria-hidden="true" />
-            </button>
+            </Button>
         </form>
     );
 }

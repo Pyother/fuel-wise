@@ -3,6 +3,7 @@
 // * React and Next:
 import { ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // * Modules:
 import { MODULES, LANGUAGES } from '@/modules/config/config';
@@ -12,6 +13,7 @@ import { useTheme } from "../theme/provider";
 import { 
     NavigationMenu,
     NavigationMenuItem,
+    NavigationMenuLink,
     NavigationMenuList
 } from "@/ui/components/navigation-menu";
 import { 
@@ -41,19 +43,21 @@ export function Navigation({children}: { children: ReactNode }) {
 
     const { t, i18n } = useTranslation();
     const { theme, setTheme } = useTheme();
+    const pathname = usePathname();
     const language = LANGUAGES.find((lang) => lang.shortcut === i18n.resolvedLanguage) ?? LANGUAGES[0];
 
     return (
         <NavigationMenu className="navigation-menu">
             <NavigationMenuList className="navigation-list">
-                {MODULES.map((module: ConfigModule, index) => (
-                    <Link key={index} href={module.href}>
-                        <NavigationMenuItem>
-                        {t(module.name)}
+                {MODULES.map((module: ConfigModule) => (
+                    <NavigationMenuItem key={module.href}>
+                        <NavigationMenuLink render={<Link href={module.href} />}
+                            active={pathname === module.href} aria-current={pathname === module.href ? "page" : undefined}>
+                            {t(module.name)}
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
-                    </Link>
                 ))}
-                <div className="navigation-controls flex flex-1 flex-row gap-(--spacing-md) justify-end">
+                <li className="navigation-controls flex flex-1 flex-row gap-(--spacing-md) justify-end">
                     
                     <Select
                         value={language.shortcut}
@@ -91,7 +95,7 @@ export function Navigation({children}: { children: ReactNode }) {
                             <Moon />
                         }
                     </Button>
-                </div>
+                </li>
             </NavigationMenuList>
             {children}
         </NavigationMenu>

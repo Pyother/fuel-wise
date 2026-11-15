@@ -70,12 +70,10 @@
 
 .ranking-retry {
     align-self: start;
-    text-decoration: underline;
-    font-size: 0.875rem;
 }
 
 @media (width < 64rem) {
-    .ranking-pagination button, .ranking-retry {
+    .ranking-pagination button, .ranking-retry, .ranking-options input, .ranking-options button {
         min-height: 2.75rem;
     }
 }

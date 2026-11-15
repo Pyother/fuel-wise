@@ -11,8 +11,9 @@ import { REFUEL_LITERS } from "./lib/calculateRanking";
 import { useTranslation } from "react-i18next";
 
 // * UI:
-import { ChartColumn, LoaderCircle, MapPin } from "lucide-react";
+import { ChartColumn, Info, LoaderCircle, MapPin } from "lucide-react";
 import { Button } from "@/ui/components/button";
+import { Input } from "@/ui/components/input";
 import RankingItem from "./ui/ranking-item";
 import "./ranking.css";
 
@@ -26,19 +27,19 @@ const Ranking = () => {
                 <h2 className="flex items-center gap-2"><ChartColumn className="size-5" aria-hidden="true" />{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>
                 <p>{t("ranking_assumptions", { liters: REFUEL_LITERS, consumption })}</p>
-                <p>{t("prices_sample_notice")}</p>
-                <form className="flex flex-wrap items-end gap-2" onSubmit={event => {
+                <p className="flex items-start gap-1.5"><Info className="mt-0.5 size-4 shrink-0" aria-hidden="true" />{t("prices_sample_notice")}</p>
+                <form className="ranking-options flex flex-wrap items-end gap-2" onSubmit={event => {
                     event.preventDefault();
                     const value = Number(new FormData(event.currentTarget).get("consumption"));
                     if (Number.isFinite(value) && value >= 0.1 && value <= 100) setConsumption(value);
                 }}>
                     <label className="grid gap-1 text-sm">
                         {t("ranking_consumption")}
-                        <input className="w-32 rounded-md border border-border bg-background px-2 py-1"
+                        <Input className="w-32"
                             name="consumption" type="number" min={0.1} max={100} step={0.1}
                             required defaultValue={consumption} />
                     </label>
-                    <Button type="submit" variant="outline" size="sm">{t("search_apply")}</Button>
+                    <Button type="submit">{t("search_apply")}</Button>
                 </form>
                 {searchPoint && <p className="ranking-origin" title={searchPoint.label}>
                     <MapPin className="mr-1 inline size-4" aria-hidden="true" />{t("ranking_from", { location: searchPoint.label })}
@@ -50,7 +51,7 @@ const Ranking = () => {
                     !ranking.count ? t("ranking_wait") : null}
             </div>
             {(ranking.error || ranking.failed > 0) && !ranking.loading && (
-                <button type="button" className="ranking-retry" onClick={ranking.retry}>{t("ranking_retry")}</button>
+                <Button type="button" variant="outline" className="ranking-retry" onClick={ranking.retry}>{t("ranking_retry")}</Button>
             )}
             <div className="ranking-list" ref={listRef} aria-busy={ranking.loading}>
                 <ol start={ranking.offset + 1}>

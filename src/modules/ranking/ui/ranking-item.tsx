@@ -45,7 +45,7 @@ const RankingItem = ({ item, rank, selected, onSelect }: {
                 </span>
                 {station.prices?.pb95 != null ? (
                     <span className="ranking-item-price">
-                        <span className="flex items-center gap-1 text-xs"><Fuel className="size-4 text-primary" aria-hidden="true" />Pb95</span>
+                        <span className="flex items-center gap-1 text-xs"><Fuel className="size-4" aria-hidden="true" />Pb95</span>
                         <strong className="tabular-nums"><PriceAmount value={station.prices.pb95} /></strong>
                         <small className="text-muted-foreground">€/L</small>
                     </span>
