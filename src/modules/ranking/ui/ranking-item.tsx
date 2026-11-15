@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 // * Types:
 import type { RankingResult } from "../types/ranking-result.type";
+import type { CostedRankingResult } from "../lib/calculateRanking";
 
 // * UI:
 import { Fuel, Navigation } from "lucide-react";
@@ -12,15 +13,16 @@ import { PriceAmount } from "@/modules/prices/ui/price-amount";
 import "./ranking-item.css";
 
 const RankingItem = ({ item, rank, selected, onSelect }: {
-    item: RankingResult; rank: number; selected: boolean; onSelect: (item: RankingResult) => void;
+    item: CostedRankingResult; rank: number; selected: boolean; onSelect: (item: RankingResult) => void;
 }) => {
     const { t, i18n } = useTranslation();
     const { station, route } = item;
     const number = new Intl.NumberFormat(i18n.resolvedLanguage, { maximumFractionDigits: 1 });
+    const money = new Intl.NumberFormat(i18n.resolvedLanguage, { style: "currency", currency: "EUR" });
     return (
         <li>
             <button type="button" className="ranking-item" aria-pressed={selected} onClick={() => onSelect(item)}>
-                <span className={`ranking-item-position ${route && rank === 1 ? "bg-primary/15 text-primary" : "bg-muted"}`}>{route ? rank : "—"}</span>
+                <span className={`ranking-item-position ${item.costs && rank === 1 ? "bg-primary/15 text-primary" : "bg-muted"}`}>{item.costs ? rank : "—"}</span>
                 <span className="ranking-item-content">
                     <strong title={station.name || station.formatted}>{station.name || station.formatted}</strong>
                     {station.name && <span className="ranking-item-address" title={station.formatted}>{station.formatted}</span>}
@@ -36,6 +38,10 @@ const RankingItem = ({ item, rank, selected, onSelect }: {
                             </span>
                         </span>
                     ) : <span className="ranking-item-address">{t("ranking_unavailable")}</span>}
+                    {item.costs ? <span className="ranking-item-costs">
+                        <strong>{t("ranking_total")}: {money.format(item.costs.total)}</strong>
+                        <span>{t("ranking_fuel_cost")}: {money.format(item.costs.fuel)} · {t("ranking_driving_cost")}: {money.format(item.costs.driving)}</span>
+                    </span> : <span className="ranking-item-costs">{t("ranking_cost_unavailable")}</span>}
                 </span>
                 {station.prices?.pb95 != null ? (
                     <span className="ranking-item-price">

@@ -8,6 +8,7 @@ import { useResultsPage } from "@/modules/search/hooks/useResultsPage";
 
 // * Lib:
 import { getRanking } from "../lib/getRanking";
+import { calculateRanking } from "../lib/calculateRanking";
 
 // * Types:
 import type { SearchPoint } from "@/modules/search/types/search-point.type";
@@ -17,7 +18,7 @@ import type { RankingResult } from "../types/ranking-result.type";
 // Reuse completed and pending requests across client-side navigation.
 const cache = new Map<string, Promise<RankingResult[]>>();
 
-export function useRanking(point: SearchPoint | null, stations: SearchStationsResult[]) {
+export function useRanking(point: SearchPoint | null, stations: SearchStationsResult[], consumption: number) {
     const key = point && stations.length ? JSON.stringify([point.latitude, point.longitude, stations]) : "";
     const [attempt, setAttempt] = useState(0);
     const [response, setResponse] = useState<{ key: string; attempt: number; results: RankingResult[]; error: boolean }>();
@@ -41,8 +42,8 @@ export function useRanking(point: SearchPoint | null, stations: SearchStationsRe
     }, [key, point, stations, attempt]);
 
     const ready = !!key && response?.key === key && response.attempt === attempt;
-    const results = ready ? response.results : [];
-    const pagination = useResultsPage(results.length, key, ".ranking-list li");
+    const results = calculateRanking(ready ? response.results : [], consumption);
+    const pagination = useResultsPage(results.length, `${key}:${consumption}`, ".ranking-list li");
     return {
         ...pagination,
         items: results.slice(pagination.offset, pagination.offset + pagination.size),

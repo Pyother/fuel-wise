@@ -5,6 +5,7 @@ import { useStations } from "@/modules/map/provider";
 
 // * Hooks:
 import { useRanking } from "./hooks/useRanking";
+import { REFUEL_LITERS } from "./lib/calculateRanking";
 
 // * Translations:
 import { useTranslation } from "react-i18next";
@@ -18,12 +19,13 @@ import "./ranking.css";
 const Ranking = () => {
     const { t } = useTranslation();
     const { searchPoint, stations, selectedRanking, toggleRanking, consumption, setConsumption } = useStations();
-    const { listRef, ...ranking } = useRanking(searchPoint, stations);
+    const { listRef, ...ranking } = useRanking(searchPoint, stations, consumption);
     return (
         <aside id="ranking-panel" className="ranking" aria-label={t("ranking_title")}>
             <header>
                 <h2 className="flex items-center gap-2"><ChartColumn className="size-5" aria-hidden="true" />{t("ranking_title")}</h2>
                 <p>{t("ranking_description")}</p>
+                <p>{t("ranking_assumptions", { liters: REFUEL_LITERS, consumption })}</p>
                 <p>{t("prices_sample_notice")}</p>
                 <form className="flex flex-wrap items-end gap-2" onSubmit={event => {
                     event.preventDefault();
