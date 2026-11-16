@@ -45,17 +45,24 @@ export async function getLocations({
     }
 
     const data: {
-        results: (Partial<SearchLocationsResult> & { result_type?: string; city?: string })[];
+        results: (Partial<SearchLocationsResult> & {
+            result_type?: string; city?: string; county?: string; state?: string; country?: string;
+        })[];
     } =
         await response.json();
 
-    return data.results.flatMap(({ place_id, city, lat, lon, result_type, country_code, bbox }) =>
+    return data.results.flatMap(({ place_id, city, lat, lon, result_type, country_code, bbox, county, state, country }) =>
         result_type === "city" &&
         typeof place_id === "string" &&
         typeof city === "string" && city.trim().length > 0 &&
         typeof lat === "number" && Number.isFinite(lat) &&
         typeof lon === "number" && Number.isFinite(lon)
-            ? [{ place_id, formatted: city, lat, lon, country_code, bbox }]
+            ? [{
+                place_id, formatted: city, lat, lon, country_code, bbox,
+                description: [...new Set([county, state, country].filter(
+                    (part): part is string => typeof part === "string" && !!part.trim() && part !== city
+                ))].join(", "),
+            }]
             : []
     );
 }

@@ -16,7 +16,7 @@ export const SearchMap = () => {
         <>
             <Search search={search} onStationSelect={setSelectedStation} picking={picking}
                 onTogglePick={() => setPicking(active => !active)} />
-            <Map fullScreen={false} stations={stations} selectedStation={selectedStation}
+            <Map fullScreen={false} stations={stations} selectedStation={selectedStation} location={search.city}
                 onStationSelect={setSelectedStation} searchPoint={searchPoint}
                 onPick={picking ? (latitude, longitude) => {
                     search.pickPoint(latitude, longitude);

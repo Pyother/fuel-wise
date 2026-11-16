@@ -31,7 +31,7 @@ export function Map(props: MapProps) {
     const { theme } = useTheme();
     const mapRef = useRef<MapRef>(null);
     const [loaded, setLoaded] = useState(false);
-    const { stations, selectedStation, searchPoint } = props;
+    const { stations, selectedStation, searchPoint, location } = props;
     const geometry = useStations().selectedRanking?.route?.geometry;
 
     useEffect(() => {
@@ -53,7 +53,12 @@ export function Map(props: MapProps) {
         }
         const points: [number, number][] = (stations ?? []).map(({ lon, lat }) => [lon, lat]);
         if (searchPoint) points.push([searchPoint.longitude, searchPoint.latitude]);
-        if (!points.length) return;
+        if (!points.length) {
+            if (location) {
+                map.flyTo({ center: [location.lon, location.lat], zoom: 12, duration: 700 });
+            }
+            return;
+        }
         if (points.length === 1) {
             map.flyTo({ center: points[0], zoom: 15, duration: 700 });
             return;
@@ -61,7 +66,7 @@ export function Map(props: MapProps) {
         const bounds = new LngLatBounds();
         points.forEach(point => bounds.extend(point));
         map.fitBounds(bounds, { padding: 48, maxZoom: 15, duration: 700 });
-    }, [loaded, stations, selectedStation, searchPoint, geometry]);
+    }, [loaded, stations, selectedStation, searchPoint, geometry, location]);
  
     return (
         <Wrapper 

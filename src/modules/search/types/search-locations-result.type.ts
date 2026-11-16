@@ -1,6 +1,7 @@
 export type SearchLocationsResult = {
     place_id: string;
     formatted: string;
+    description?: string;
     lat: number;
     lon: number;
     country_code?: string;

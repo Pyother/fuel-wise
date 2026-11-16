@@ -1,15 +1,27 @@
 .search-locations-item {
     width: 100%;
     min-width: 0;
-    height: 2rem;
+    min-height: 2rem;
     gap: var(--spacing-sm);
-    padding: 0 var(--spacing-sm);
+    padding: 0.375rem var(--spacing-sm);
 }
 
 .search-locations-item-content {
+    display: grid;
     flex: 1;
     min-width: 0;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.search-locations-item-content > span,
+.search-locations-item-content > small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-locations-item-content > small {
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
 }

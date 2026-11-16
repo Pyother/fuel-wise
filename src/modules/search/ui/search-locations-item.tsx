@@ -15,12 +15,13 @@ const SearchLocationsItem = ({ props, onSelect }:
         <CommandItem
             className="search-locations-item"
             value={props.place_id}
-            keywords={[props.formatted]}
+            keywords={[props.formatted, props.description ?? ""]}
             onSelect={() => onSelect?.(props)}
         >
             <MapPin aria-hidden="true" />
-            <span className="search-locations-item-content" title={props.formatted}>
-                {props.formatted}
+            <span className="search-locations-item-content" title={[props.formatted, props.description].filter(Boolean).join(", ")}>
+                <span>{props.formatted}</span>
+                {props.description && <small>{props.description}</small>}
             </span>
         </CommandItem>
     )
